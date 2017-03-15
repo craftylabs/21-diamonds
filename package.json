@@ -1,7 +1,7 @@
 {
-  "name": "thinkful-full-stack-template-v2",
+  "name": "21-Diamonds",
   "version": "0.1.0",
-  "description": "A full-stack starter template",
+  "description": "A Nim derivation Black Jack Card Game",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -18,7 +18,7 @@
     "server/node_modules",
     "client/node_modules"
   ],
-  "author": "Joe Turner <jturner@thinkful.com>",
+  "author": "Roberto Quezada, Anitha Boddu, Will Broadway, Spencer Southwell",
   "license": "MIT",
   "dependencies": {
     "cross-env": "^3.1.4",
