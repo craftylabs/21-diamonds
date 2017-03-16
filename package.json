@@ -11,7 +11,9 @@
     "dev:server": "cd server && npm start",
     "install": "run-s install:server install:client",
     "install:server": "cd server && npm install",
-    "install:client": "cd client && npm install"
+    "install:client": "cd client && npm install",
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
   },
   "cacheDirectories": [
     "node_modules",
@@ -21,10 +23,21 @@
   "author": "Roberto Quezada, Anitha Boddu, Will Broadway, Spencer Southwell",
   "license": "MIT",
   "dependencies": {
+    "babel-jest": "^19.0.0",
     "cross-env": "^3.1.4",
     "express": "^4.14.1",
     "http-proxy-middleware": "^0.17.3",
+    "jest-cli": "^19.0.2",
     "npm-run-all": "^4.0.1",
+    "react-dom": "^15.4.2",
     "xp": "^1.0.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-jest": "^19.0.0",
+    "babel-preset-react": "^6.23.0",
+    "jest": "^19.0.2",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   }
 }
