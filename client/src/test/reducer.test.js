@@ -2,6 +2,7 @@
 // const makeNewGame = require('../../server/index');
 import reducer from '../reducer/reducer';
 import * as types from '../actions/actions';
+import {initialState} from '../reducer/reducer';
 
 describe('Twenty One Diamonds', function () {
     describe("game Reducer", function () {
@@ -9,18 +10,18 @@ describe('Twenty One Diamonds', function () {
         it("Should return the initial state.",  () => {
             expect(
              reducer(undefined, {})
-             ).toEqual( 
-             {
-                runningTotal: 0,
-    winningSet: [17, 18, 19],
-    players: [
-    {id: 'A', score: 0, hands: 0},
-    {id: 'B', score: 0, hands: 0}
-    ],prevPlayer: 2,currentPlayer: 1,
-    winner: null,
-    loser: null,
-    gameCompleted: false
-             }
+             ).toEqual(initialState 
+    //          {
+    //             runningTotal: 0,
+    // winningSet: [17, 18, 19],
+    // players: [
+    // {id: 'A', score: 0, hands: 0},
+    // {id: 'B', score: 0, hands: 0}
+    // ],prevPlayer: 2,currentPlayer: 1,
+    // winner: null,
+    // loser: null,
+    // gameCompleted: false
+    //          }
              )
 
         });

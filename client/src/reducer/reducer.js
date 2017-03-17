@@ -1,7 +1,7 @@
 import * as actions from '../actions/actions';
 import update from 'immutability-helper';
 
-const initialState = {
+export const initialState = {
 	runningTotal: 0,
 	winningSet: [17, 18, 19],
 	players: [
@@ -90,4 +90,6 @@ const checkGame = (playerId, choice, state) => {
 }
 return initialState;
 }
+
+
 
