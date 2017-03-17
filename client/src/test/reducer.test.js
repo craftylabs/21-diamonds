@@ -23,11 +23,22 @@ describe('Twenty One Diamonds', function () {
 
         it("should handle ADD_CHOICE_TO_TOTAL action",  () => {
             expect(
-             reducer({initialState}, {
+             reducer(undefined, {
               type: types.ADD_CHOICE_TO_TOTAL,
               numChoice: 1
              })
-             ).toEqual({"total": initialState.runningTotal + 1})
+             ).toEqual({runningTotal: initialState.runningTotal + 1,
+                winningSet: [17, 18, 19],
+                players: [
+                        {id: 'A', score: 0, hands: 0},
+                        {id: 'B', score: 0, hands: 0}
+                        ],
+                        prevPlayer: 2,
+                        currentPlayer: 1,
+                        winner: null,
+                        loser: null,
+                        gameCompleted: false
+             })
         });  
 
     });

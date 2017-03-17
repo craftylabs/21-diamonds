@@ -17,28 +17,27 @@ loser: null,
 gameCompleted: false
 };
 
-export default function reducer (state= initialState, action) {
+export default function reducer (state = initialState, action) {
 	switch(action.type) {
 	case actions.MAKE_NEW_GAME : 
 	  state = Object.assign({}, state, initialState)
 	  return state;
 
 	case actions.ADD_CHOICE_TO_TOTAL :
-	  console.log("ACTION HERE: " + Object.keys(action))
+	  console.log("ACTION HERE: " + action.numChoice)
 	  let increment = action.numChoice;
-	  console.log(state);
+	  console.log(state.runningTotal+1);
+	  let total = increment + state.runningTotal;
+	  console.log("THE TOTAL IS", total);
 
-	  let total = increment + state;
-	  console.log(total);
-
-	  console.log("INCREMENT HERE" + increment);
-	  state = Object.assign({}, state, {total});
+	  console.log("INCREMENT By" + increment);
+	  var newState = Object.assign({}, state, {runningTotal:total});
 	  // return update(state, {runningTotal: {$apply: function(x) {return x + 1}}})
-	  return state;
+	  console.log("THE REDUCER RETURNED", newState)
+	  return newState;
 
-	default : 
-		return state;
 	}
+	return state;
 
 
 

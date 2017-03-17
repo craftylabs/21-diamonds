@@ -6,5 +6,5 @@ export const makeNewGame = () => ({
 export const ADD_CHOICE_TO_TOTAL = "ADD_CHOICE_TO_TOTAL";
 export const addChoiceToTotal = (numChoice) => ({
 	type: ADD_CHOICE_TO_TOTAL,
-	numChoice	
+	numChoice:numChoice	
 });
