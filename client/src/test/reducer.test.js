@@ -5,27 +5,24 @@ import * as types from '../actions/actions';
 import {initialState} from '../reducer/reducer';
 
 describe('Twenty One Diamonds', function () {
-    describe("game Reducer", function () {
+    describe("game reducer", function () {
 
-        it("Should return the initial state.",  () => {
+        it("should return the initial state.",  () => {
             expect(
              reducer(undefined, {})
-             ).toEqual(initialState 
-    //          {
-    //             runningTotal: 0,
-    // winningSet: [17, 18, 19],
-    // players: [
-    // {id: 'A', score: 0, hands: 0},
-    // {id: 'B', score: 0, hands: 0}
-    // ],prevPlayer: 2,currentPlayer: 1,
-    // winner: null,
-    // loser: null,
-    // gameCompleted: false
-    //          }
-             )
-
+             ).toEqual(initialState)
         });
 
+        it("should handle MAKE_NEW_GAME action",  () => {
+            expect(
+             reducer(undefined, {
+              type: types.MAKE_NEW_GAME
+              })
+             ).toEqual(initialState)
+        });    
+    });
+
+    describe("a simple game", function () {
 
         it('should have a current score of 6', function () {
             let game = makeNewGame();
