@@ -4,7 +4,8 @@
   "description": "Server portion of a full-stack starter template",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "test": "mocha --recursive"
   },
   "author": "Joe Turner <jturner@thinkful.com>",
   "license": "MIT",
