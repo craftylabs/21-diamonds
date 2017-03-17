@@ -2,7 +2,7 @@ import * as actions from '../actions/actions';
 import update from 'immutability-helper';
 
 export const initialState = {
-	runningTotal: 0,
+	runningTotal: 1,
 	winningSet: [17, 18, 19],
 	players: [
 	{id: 'A', score: 0, hands: 0},
@@ -23,22 +23,30 @@ export default function reducer (state= initialState, action) {
 	  state = Object.assign({}, state, initialState)
 	  return state;
 
+	case actions.ADD_CHOICE_TO_TOTAL :
+	  console.log("ACTION HERE: " + Object.keys(action))
+	  let increment = action.numChoice;
+	  console.log(state);
+
+	  let total = increment + state;
+	  console.log(total);
+
+	  console.log("INCREMENT HERE" + increment);
+	  state = Object.assign({}, state, {total});
+	  // return update(state, {runningTotal: {$apply: function(x) {return x + 1}}})
+	  return state;
 
 	default : 
 		return state;
 	}
-// 	const makeNewGame = () => {
 
-// 		let runningTotal = 0;
-// 		let winningSet = [17, 18, 19];
-// 		let gameCompleted = false;
-// 		let winner = null;
-// 		let loser = null;
-// 		let players = [];
-//     // methods
-//     function getCurrentScore() {
-//     	return runningTotal;
-//     }
+
+
+    // Component should be able to access runningTotal from State
+    // function getCurrentScore() {
+    // 	return runningTotal;
+    // }
+
 //     function makeChoice(playerId, numChoice) {
 //     	if (_validateChoice(numChoice)) {
 //     		runningTotal += numChoice;

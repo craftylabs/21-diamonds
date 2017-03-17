@@ -20,6 +20,16 @@ describe('Twenty One Diamonds', function () {
               })
              ).toEqual(initialState)
         });    
+
+        it("should handle ADD_CHOICE_TO_TOTAL action",  () => {
+            expect(
+             reducer({initialState}, {
+              type: types.ADD_CHOICE_TO_TOTAL,
+              numChoice: 1
+             })
+             ).toEqual({"total": initialState.runningTotal + 1})
+        });  
+
     });
 
     describe("a simple game", function () {
