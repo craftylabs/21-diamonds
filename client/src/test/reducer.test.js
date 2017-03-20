@@ -37,7 +37,7 @@ describe('Twenty One Diamonds', function () {
 
         it("should handle ADD_CHOICE_TO_TOTAL action",  () => {
             expect(
-             reducer({runningTotal: 1,
+             reducer({runningTotal: 0,
     winningSet: [17, 18, 19],
     //By default there will be two players but im thinkinh 4 should be the limit
     //And What my plan to do is take the number of players when the start game action is called
@@ -62,7 +62,53 @@ gameCompleted: false}, {
                         loser: null,
                         gameCompleted: false
              })
-        });  
+        });
+
+        it("should declare the next player as the loser if running total = winning set", () => {
+          expect(             
+            reducer({runningTotal: 17,
+    winningSet: [17, 18, 19],
+    //By default there will be two players but im thinkinh 4 should be the limit
+    //And What my plan to do is take the number of players when the start game action is called
+    //and run a for loop up to 4 times with the numberOfPlayers property being the breakpoint
+//hardcoded players
+prevPlayer: 2,
+//added currentplayer property to state object
+currentPlayer: 1,
+numberOfPlayers: 2,
+winner: null,
+loser: null,
+gameCompleted: false}, {
+              type: types.ADD_CHOICE_TO_TOTAL,
+              numChoice: 1
+             })
+             ).toEqual({runningTotal: 17,
+                winningSet: [17, 18, 19],
+                        prevPlayer: 2,
+                        currentPlayer: 2,
+                        numberOfPlayers:2,
+                        winner: null,
+                        loser: 2,
+                        gameCompleted: true
+             })
+        
+        }); 
+
+    });
+
+    describe("initial state", function() {
+        
+        it("should return player 1 as the first player to go.",  () => {
+            expect(initialState.currentPlayer).toEqual(1);
+        }); 
+
+        it("running total is 0",  () => {
+            expect(initialState.runningTotal).toEqual(0);
+        });     
+
+        it("initialState number of players is null", () => {
+          expect(initialState.numberOfPlayers).toEqual(null);
+        })    
 
     });
 

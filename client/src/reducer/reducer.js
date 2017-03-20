@@ -2,7 +2,7 @@ import * as actions from '../actions/actions';
 import update from 'immutability-helper';
 
 export const initialState = {
-	runningTotal: 1,
+	runningTotal: 0,
 	winningSet: [17, 18, 19],
 	//By default there will be two players but im thinkinh 4 should be the limit
 	//And What my plan to do is take the number of players when the start game action is called
@@ -52,8 +52,8 @@ export default function reducer (state = initialState, action) {
 
 	case actions.ADD_CHOICE_TO_TOTAL :
 	  let increment = action.numChoice;
-	 
 	  let total = increment + state.runningTotal;
+
 	  if ( state.currentPlayer >= state.numberOfPlayers) {
 	  	state.currentPlayer = 1;
 	  }
@@ -63,6 +63,12 @@ export default function reducer (state = initialState, action) {
 	  }
 	  console.log(state.currentPlayer);
 
+	  if (total >= 17) {
+	  	let gameLoser = state.currentPlayer;
+	  	let gameIsDone = true;
+	 var newState = Object.assign({}, state, {loser: gameLoser, gameCompleted: gameIsDone});
+	 return newState;
+	  }
 	 
 	  var newState = Object.assign({}, state, {runningTotal:total, currentPlayer:state.currentPlayer});
 	  // console.log("NEW STATE IS HERE", newState)
