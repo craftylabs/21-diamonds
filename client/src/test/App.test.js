@@ -5,6 +5,5 @@ describe('App component', () => {
 
 	it('Should pass for now', () => {
 		expect(1).toEqual(1);
-	} 
-
-})
+	})
+});
