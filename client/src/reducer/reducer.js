@@ -4,36 +4,68 @@ import update from 'immutability-helper';
 export const initialState = {
 	runningTotal: 1,
 	winningSet: [17, 18, 19],
-	players: [
-	{id: 'A', score: 0, hands: 0},
-	{id: 'B', score: 0, hands: 0}
-	],
+	//By default there will be two players but im thinkinh 4 should be the limit
+	//And What my plan to do is take the number of players when the start game action is called
+	//and run a for loop up to 4 times with the numberOfPlayers property being the breakpoint
 //hardcoded players
 prevPlayer: 2,
 //added currentplayer property to state object
 currentPlayer: 1,
+numberOfPlayers: null,
 winner: null,
 loser: null,
-gameCompleted: false
+gameCompleted: false,
+players:null
 };
 
 export default function reducer (state = initialState, action) {
 	switch(action.type) {
 	case actions.MAKE_NEW_GAME : 
-	  state = Object.assign({}, state, initialState)
-	  return state;
+	console.log(action.players);
+	let players = [];
+
+	for(var i = 0; i<action.players; i++) {
+	
+		if(i === 0) {
+			players[i] = {id: 'A', score:0, hands:0}
+		}
+
+		if(i === 1) {
+			players[i] = {id: 'B', score:0, hands:0}
+		}
+
+		if(i === 2) {
+			players[i] = {id: 'C', score:0, hands:0}
+		}
+
+		if(i === 3) {
+			players[i] = {id: 'D', score:0, hands:0}
+		}
+
+	}
+	console.log("THE PLAYERS ARE", players);
+
+	  var theState = Object.assign({}, state, {numberOfPlayers:action.players, players:players});
+	  // console.log("NUMBER OF PLAYERS", action);
+	  // console.log(theState);
+	  return theState;
 
 	case actions.ADD_CHOICE_TO_TOTAL :
-	  console.log("ACTION HERE: " + action.numChoice)
 	  let increment = action.numChoice;
-	  console.log(state.runningTotal+1);
+	 
 	  let total = increment + state.runningTotal;
-	  console.log("THE TOTAL IS", total);
+	  if ( state.currentPlayer >= state.numberOfPlayers) {
+	  	state.currentPlayer = 1;
+	  }
+	  else {
+	  	console.log("MADE IT IN THE ELSE LOOP");
+	  	state.currentPlayer += 1;
+	  }
+	  console.log(state.currentPlayer);
 
-	  console.log("INCREMENT By" + increment);
-	  var newState = Object.assign({}, state, {runningTotal:total});
-	  // return update(state, {runningTotal: {$apply: function(x) {return x + 1}}})
-	  console.log("THE REDUCER RETURNED", newState)
+	 
+	  var newState = Object.assign({}, state, {runningTotal:total, currentPlayer:state.currentPlayer});
+	  // console.log("NEW STATE IS HERE", newState)
 	  return newState;
 
 	}
@@ -60,7 +92,7 @@ export default function reducer (state = initialState, action) {
 //     	return true;
 //     }
 //     function getWinner() {
-//     	if (runningTotal === 17) {
+//     	if (runningTotal === 17 || runningTotal === 18 || runningTotal === 19) {
 //     		state.winner = state.currentPlayer;
 //     	}
 //     	else state.winner = state.prevPlayer;
