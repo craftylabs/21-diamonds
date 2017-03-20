@@ -1,5 +1,4 @@
-// const should = require('chai').should();
-// const makeNewGame = require('../../server/index');
+
 import reducer from '../reducer/reducer';
 import * as types from '../actions/actions';
 import {initialState} from '../reducer/reducer';
@@ -26,70 +25,63 @@ describe('Twenty One Diamonds', function () {
                         {id: 'B', score: 0, hands: 0},
                         {id: 'C', score: 0, hands: 0},
                         {id: 'D', score: 0, hands: 0}
-                        ],
-                        prevPlayer: 2,
-                        currentPlayer: 1,
-                        numberOfPlayers:4,
-                        winner: null,
-                        loser: null,
-                        gameCompleted: false})
+                ],
+
+                prevPlayer: 2,
+                currentPlayer: 1,
+                numberOfPlayers:4,
+                winner: null,
+                loser: null,
+                gameCompleted: false})
         });    
 
         it("should handle ADD_CHOICE_TO_TOTAL action",  () => {
             expect(
              reducer({runningTotal: 0,
-    winningSet: [17, 18, 19],
-    //By default there will be two players but im thinkinh 4 should be the limit
-    //And What my plan to do is take the number of players when the start game action is called
-    //and run a for loop up to 4 times with the numberOfPlayers property being the breakpoint
-//hardcoded players
-prevPlayer: 2,
-//added currentplayer property to state object
-currentPlayer: 1,
-numberOfPlayers: 2,
-winner: null,
-loser: null,
-gameCompleted: false}, {
+              winningSet: [17, 18, 19],
+              prevPlayer: 2,
+              currentPlayer: 1,
+              numberOfPlayers: 2,
+              winner: null,
+              loser: null,
+              gameCompleted: false}, {
               type: types.ADD_CHOICE_TO_TOTAL,
               numChoice: 1
              })
+
              ).toEqual({runningTotal: initialState.runningTotal + 1,
                 winningSet: [17, 18, 19],
-                        prevPlayer: 2,
-                        currentPlayer: 2,
-                        numberOfPlayers:2,
-                        winner: null,
-                        loser: null,
-                        gameCompleted: false
+                prevPlayer: 2,
+                currentPlayer: 2,
+                numberOfPlayers:2,
+                winner: null,
+                loser: null,
+                gameCompleted: false
              })
         });
 
         it("should declare the next player as the loser if running total = winning set", () => {
           expect(             
             reducer({runningTotal: 17,
-    winningSet: [17, 18, 19],
-    //By default there will be two players but im thinkinh 4 should be the limit
-    //And What my plan to do is take the number of players when the start game action is called
-    //and run a for loop up to 4 times with the numberOfPlayers property being the breakpoint
-//hardcoded players
-prevPlayer: 2,
-//added currentplayer property to state object
-currentPlayer: 1,
-numberOfPlayers: 2,
-winner: null,
-loser: null,
-gameCompleted: false}, {
+              winningSet: [17, 18, 19],
+              prevPlayer: 2,
+              currentPlayer: 1,
+              numberOfPlayers: 2,
+              winner: null,
+              loser: null,
+              gameCompleted: false}, {
               type: types.ADD_CHOICE_TO_TOTAL,
               numChoice: 1
              })
+
              ).toEqual({runningTotal: 17,
                 winningSet: [17, 18, 19],
-                        prevPlayer: 2,
-                        currentPlayer: 2,
-                        numberOfPlayers:2,
-                        winner: null,
-                        loser: 2,
-                        gameCompleted: true
+                prevPlayer: 2,
+                currentPlayer: 2,
+                numberOfPlayers:2,
+                winner: null,
+                loser: 2,
+                gameCompleted: true
              })
         
         }); 
@@ -114,50 +106,9 @@ gameCompleted: false}, {
 
     describe("a simple game", function () {
 
-        // it('should have a current score of 6', function () {
-        //     let game = makeNewGame();
-        //     let state = 
-        //     reducer(undefined)
-        //     game.makeChoice(2, 3);
-        //     game.makeChoice(1, 2);
-        //     const currentScore = game.getCurrentScore();
-        //     currentScore.should.equal(6);
-        // });
-        xit('should declare player the who does not land on 21 the winner', function () {
-             expect(
-                reducer(undefined, {
-                 type: types.MAKE_NEW_GAME,
-                 players:4
-             }),
-             reducer(undefined, { type: types.ADD_CHOICE_TO_TOTAL,
-             numChoice:3}),
-             reducer(undefined, { type: types.ADD_CHOICE_TO_TOTAL,
-             numChoice:3}),
-             reducer(undefined, { type: types.ADD_CHOICE_TO_TOTAL,
-             numChoice:3}),
-             reducer(undefined, { type: types.ADD_CHOICE_TO_TOTAL,
-             numChoice:3}),
-             reducer(undefined, { type: types.ADD_CHOICE_TO_TOTAL,
-             numChoice:3}),
-             reducer(undefined, { type: types.ADD_CHOICE_TO_TOTAL,
-             numChoice:3})
-        
-            .toEqual("LULU")
-            )
-        });
-        xit('should declare player 1 as winner if previous choice adds up to 17', function(){
-          let game = makeNewGame();
-          game.makeChoice(1,1)
-          game.makeChoice(2,3)
-          game.makeChoice(1,3)
-          game.makeChoice(2,2)
-          game.makeChoice(1,3)
-          game.makeChoice(2,1)
-          game.makeChoice(1,2)
-          game.makeChoice(2,2)
-          const winner = game.getWinner();
-          winner.should.equal(1);
-        })
+      
+     
+       
     });
     describe('concurrent games', function(){
       xit('should have separate scores for each new game', function(){
