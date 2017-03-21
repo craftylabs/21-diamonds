@@ -9,8 +9,8 @@ module.exports = {
   'TEST_DB_URL': process.env.TEST_DATABASE_URL || 'mongodb://localhost/21-diamonds-test',
   'PORT': process.env.PORT || 8080,
   'facebookAuth' : {
-        'clientID'      : process.env.FB_CLIENT_ID,
-        'clientSecret'  : process.env.FB_CLIENT_SECRET,
+        'clientID'      : process.env.FB_CLIENT_ID || '774058129424522',
+        'clientSecret'  : process.env.FB_CLIENT_SECRET || '10d10e1f1a408b283310a06d6cfa7893',
         'callbackURL'   : 'http://localhost:8080/auth/facebook/callback'
     },
     'twitterAuth' : {

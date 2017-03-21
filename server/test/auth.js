@@ -15,10 +15,11 @@ describe('Secured endpoints', function(){
     return closeServer();
   });
 
-  it('should not allow a non-authenticated user to see dashboard')
+//   it('should not allow a non-authenticated user to see dashboard')
 
 
 
 
+// 
 })
 
