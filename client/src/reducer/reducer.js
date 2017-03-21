@@ -10,7 +10,7 @@ export const initialState = {
 	winner: null,
 	loser: null,
 	gameCompleted: false,
-	players:null
+	players:null,
 };
 
 export default function reducer (state = initialState, action) {
