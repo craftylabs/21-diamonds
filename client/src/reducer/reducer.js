@@ -23,19 +23,19 @@ export default function reducer (state = initialState, action) {
 	for(var i = 0; i<action.players; i++) {
 	
 		if(i === 0) {
-			players[i] = {id: 'A', score:0, hands:0}
+			players[i] = {id: 'A', score:0, hands:0, ai:null}
 		}
 
 		if(i === 1) {
-			players[i] = {id: 'B', score:0, hands:0}
+			players[i] = {id: 'B', score:0, hands:0, ai:null}
 		}
 
 		if(i === 2) {
-			players[i] = {id: 'C', score:0, hands:0}
+			players[i] = {id: 'C', score:0, hands:0, ai:null}
 		}
 
 		if(i === 3) {
-			players[i] = {id: 'D', score:0, hands:0}
+			players[i] = {id: 'D', score:0, hands:0, ai:null}
 		}
 
 	}
