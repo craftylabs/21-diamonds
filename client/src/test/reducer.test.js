@@ -21,10 +21,10 @@ describe('Twenty One Diamonds', function () {
              ).toEqual({runningTotal: initialState.runningTotal,
                 winningSet: [17, 18, 19],
                 players: [
-                        {id: 'A', score: 0, hands: 0},
-                        {id: 'B', score: 0, hands: 0},
-                        {id: 'C', score: 0, hands: 0},
-                        {id: 'D', score: 0, hands: 0}
+                        {id: 'A', score: 0, hands: 0, ai:null},
+                        {id: 'B', score: 0, hands: 0, ai:null},
+                        {id: 'C', score: 0, hands: 0, ai:null},
+                        {id: 'D', score: 0, hands: 0, ai:null}
                 ],
 
                 prevPlayer: 2,
