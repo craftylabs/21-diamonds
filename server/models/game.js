@@ -1,17 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const findOrCreate = require('mongoose-findorcreate');
+const { User } = require ('./user')
 
-// const gameSchema = mongoose.Schema({
-    
-//     userId: { type:String, required:true} 
 
-// });
 const gameSchema = mongoose.Schema({
     
     userId: { type:String, required:true} ,
     players: [
-              {playerOne:{type: String}}
+              {playerOne:{/*type: mongoose.Schema.Types.ObjectId, ref: 'User'*/ type: String}}
               
              ],
     winner: { type:String,required:true},
@@ -21,10 +18,11 @@ const gameSchema = mongoose.Schema({
 
 gameSchema.methods.apiRepr = function () {
     return {
-        id: this.userId,
+        _id:this.id,
+        userId: this.userId,
         players:this.players,
         winner: this.winner,
-        datecompleted: this.dateCompleted
+        dateCompleted: this.dateCompleted
     }
 }
 

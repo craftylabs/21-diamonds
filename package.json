@@ -21,10 +21,13 @@
   "author": "Roberto Quezada, Anitha Boddu, Will Broadway, Spencer Southwell",
   "license": "MIT",
   "dependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
     "cross-env": "^3.1.4",
     "dotenv": "^4.0.0",
     "express": "^4.14.1",
     "http-proxy-middleware": "^0.17.3",
+    "mocha": "^3.2.0",
     "mongoose": "^4.9.1",
     "npm-run-all": "^4.0.1",
     "xp": "^1.0.1"
