@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Button from './button';
-// import logo from './logo.svg';
-// import './css/App.css';
+import Header from './header';
 
 class App extends Component {
   render() {
@@ -9,7 +8,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           
-          <h2>21 Diamonds</h2>
+          <Header />
           <h3> A modern spin to the timeless classic, Nim </h3>
         </div>
           <Button text={"Start Game"}> </Button>

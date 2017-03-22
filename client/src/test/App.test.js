@@ -9,4 +9,5 @@ describe('App component', () => {
 	it('Should render without crashing', () => {
 		const wrapper = shallow(<App/>);
 	})
+
 });
