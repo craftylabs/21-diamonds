@@ -24,6 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "babel-jest": "^19.0.0",
+    "babel-polyfill": "^6.23.0",
     "cross-env": "^3.1.4",
     "enzyme": "^2.7.1",
     "express": "^4.14.1",
@@ -33,8 +34,11 @@
     "npm-run-all": "^4.0.1",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-redux": "^5.0.3",
     "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
     "xp": "^1.0.1"
   },
   "devDependencies": {

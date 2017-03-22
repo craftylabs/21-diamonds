@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -8,6 +9,10 @@ import GameResult from './js/game-result';
 import Instructions from './js/instructions';
 import Login from './js/login';
 
+import {Provider} from 'react-redux';
+
+import store from './store';
+
 import './css/index.css';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {Route} from 'react-router';
@@ -16,6 +21,7 @@ import {Route} from 'react-router';
 
 const routes =(
  <div>
+ <Provider store={store}>
  <Router>
  <div>
  <Route path='/app' component={App}/>
@@ -26,11 +32,16 @@ const routes =(
   <Route path='/instructions' component={Instructions} />
   </div>
   </Router>
+  </Provider> 
   </div>
   );
 
 
 document.addEventListener('DOMContentLoaded' , () => 
-ReactDOM.render(routes, document.getElementById('root'))
+ReactDOM.render(
+
+	routes
+
+	,document.getElementById('root'))
 );
 

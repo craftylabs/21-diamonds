@@ -8,7 +8,7 @@ export const ADD_CHOICE_TO_TOTAL = "ADD_CHOICE_TO_TOTAL";
 export const addChoiceToTotal = (numChoice, player ) => ({
 	type: ADD_CHOICE_TO_TOTAL,
 	numChoice:numChoice	,
-	player:Player,
+	player:player,
 
 });
 
