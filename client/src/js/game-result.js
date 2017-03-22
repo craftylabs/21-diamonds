@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './header';
 import Button from './button';
+import {connect} from 'react-redux';
 
 class GameResult extends Component {
   render() {
@@ -21,4 +22,4 @@ class GameResult extends Component {
   }
 }
 
-export default GameResult;
+export default connect()(GameResult);

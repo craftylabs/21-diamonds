@@ -1,5 +1,4 @@
 import * as actions from '../actions/actions';
-import update from 'immutability-helper';
 
 export const initialState = {
 	runningTotal: 0,
@@ -61,14 +60,14 @@ export default function reducer (state = initialState, action) {
 	  	let gameLoser = state.currentPlayer;
 	  	let gameIsDone = true;
 	 
-	 var newState = Object.assign({}, state, 
+	 let newState = Object.assign({}, state, 
 	 	{loser: gameLoser, gameCompleted: gameIsDone});
 	 
 	 return newState;
 	 //At this point we would have the loser displayed and the gameData will be sent to the server
 	  }
 	 
-	  var newState = Object.assign({}, state, 
+	  let newState = Object.assign({}, state, 
 	  	{runningTotal:total, currentPlayer:state.currentPlayer});
 
 	  return newState;

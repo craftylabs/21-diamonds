@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from './button';
 import Header from './header';
-
+import {connect} from 'react-redux';
 
 class GameMode extends Component {
   render() {
@@ -17,4 +17,4 @@ class GameMode extends Component {
   }
 }
 
-export default GameMode;
+export default connect()(GameMode);

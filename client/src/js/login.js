@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './header';
 import Button from './button';
+import {connect} from 'react-redux';
 
 function Login () {
       return (
@@ -17,4 +18,4 @@ function Login () {
     )
 }
 
-export default Login;
+export default connect ()(Login);
