@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Button from './button';
 import Header from './header';
 import {connect} from 'react-redux';
 
@@ -13,8 +12,8 @@ class GamePlay extends Component {
 
 	submitNumChoice(event) {
 		// event.preventDefault();
-		console.log(event);
-		this.props.dispatch(actions.addChoiceToTotal(1, 1));
+		console.log(event.target.value);
+		this.props.dispatch(actions.addChoiceToTotal(event.target.value, 1));
 
 	}
 
@@ -27,11 +26,12 @@ class GamePlay extends Component {
 			<img alt="game-play-canvas" src="http://placehold.it/350x350" />
 			<p>count: {this.props.runningTotal}</p>
 			<div onClick={this.submitNumChoice}>
-			<Button text="1" value="1" />
-			<Button text="2" value="2" />
-			<Button text="3" value="3" />
+			<button value="1"> 1 </button>
+			<button value="2"> 2 </button>
+			<button value="3"> 3 </button>
 			</div>
 			</div>
+
 		)
 	}
 }

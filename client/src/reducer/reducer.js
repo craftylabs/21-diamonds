@@ -46,30 +46,36 @@ export default function reducer (state = initialState, action) {
 
 	case actions.ADD_CHOICE_TO_TOTAL :
 
-	  let increment = action.numChoice;
+	  let increment = parseInt(action.numChoice, 10);
+
 	  let total = increment + state.runningTotal;
 
+	console.log(total);
+
 	  if ( state.currentPlayer >= state.numberOfPlayers) {
+
 	  	state.currentPlayer = 1;
 	  }
 	  else {
+
 	  	state.currentPlayer += 1;
 	  }
 
 	  if (total >= 17) {
+
 	  	let gameLoser = state.currentPlayer;
 	  	let gameIsDone = true;
 	 
 	 let newState = Object.assign({}, state, 
 	 	{loser: gameLoser, gameCompleted: gameIsDone});
-	 
+	 console.log(newState);
 	 return newState;
 	 //At this point we would have the loser displayed and the gameData will be sent to the server
 	  }
 	 
 	  let newState = Object.assign({}, state, 
-	  	{runningTotal:total, currentPlayer:state.currentPlayer});
-
+	  	{runningTotal: total}, {currentPlayer:state.currentPlayer});
+	  console.log(newState);
 	  return newState;
 
 	}
