@@ -17,6 +17,8 @@ export default function reducer (state = initialState, action) {
 	
 	case actions.MAKE_NEW_GAME : 
 
+	console.log(action);
+
 	let players = [];
 
 	for(var i = 0; i<action.players; i++) {
@@ -26,7 +28,7 @@ export default function reducer (state = initialState, action) {
 		}
 
 		if(i === 1) {
-			players[i] = {id: 'B', score:0, hands:0, ai:null}
+			players[i] = {id: 'B', score:0, hands:0, ai:true}
 		}
 
 		if(i === 2) {
@@ -38,6 +40,8 @@ export default function reducer (state = initialState, action) {
 		}
 
 	}
+
+			console.log(players);
 
 	  var theState = Object.assign({}, state, 
 	  	{numberOfPlayers:action.players, players:players});

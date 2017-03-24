@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from './button';
 import Header from './header';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 class App extends Component {
   render() {
@@ -12,10 +13,25 @@ class App extends Component {
           <Header />
           <h3> A modern spin to the timeless classic, Nim </h3>
         </div>
-          <Button text={"Start Game"}> </Button>
-          <Button text={"LeaderBoard"}> </Button>
-          <Button text={"Instructions"}> </Button>
-          <Button text={"log in"}> </Button>
+
+            <button>
+                <Link to={'/login'} >
+                Start Game
+                </Link>
+            </button>
+
+            <button>
+                <Link to={'/leaderboard'} >
+                Leaderboard
+                </Link>
+            </button>
+
+            <button>
+                <Link to={'/instructions'} >
+                Instructions
+                </Link>
+            </button>
+
       </div>
     );
   }

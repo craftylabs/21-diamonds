@@ -8,6 +8,7 @@ import GamePlay from './js/game-play';
 import GameResult from './js/game-result';
 import Instructions from './js/instructions';
 import Login from './js/login';
+import Leaderboard from './js/leaderboard';
 
 import {Provider} from 'react-redux';
 
@@ -30,6 +31,7 @@ const routes =(
   <Route path='/gameplay' component={GamePlay} />
   <Route path='/gameresult' component={GameResult} />
   <Route path='/instructions' component={Instructions} />
+  <Route path='/leaderboard' component={Leaderboard} />
   </div>
   </Router>
   </Provider> 
