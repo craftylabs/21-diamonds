@@ -33,7 +33,41 @@ describe('Twenty One Diamonds', function () {
                 winner: null,
                 loser: null,
                 gameCompleted: false})
-        });    
+        });
+
+      it("Should handle the SUBTRACT_SECOND action", () => {
+        expect(
+            reducer({runningTotal: initialState.runningTotal,
+                winningSet: [17, 18, 19],
+                players: [
+                        {id: 'A', score: 0, hands: 0, ai:null},
+                        {id: 'B', score: 0, hands: 0, ai:null}
+                ],
+
+                prevPlayer: 2,
+                currentPlayer: 1,
+                numberOfPlayers:4,
+                winner: null,
+                loser: null,
+                seconds:6,
+                gameCompleted: false}, {
+              type: types.SUBTRACT_SECOND
+            })
+          ).toEqual({runningTotal: initialState.runningTotal,
+                winningSet: [17, 18, 19],
+                players: [
+                        {id: 'A', score: 0, hands: 0, ai:null},
+                        {id: 'B', score: 0, hands: 0, ai:null}
+                ],
+
+                prevPlayer: 2,
+                currentPlayer: 1,
+                numberOfPlayers:4,
+                winner: null,
+                loser: null,
+                seconds:5,
+                gameCompleted: false})
+        })    
 
         it("should handle ADD_CHOICE_TO_TOTAL action",  () => {
             expect(

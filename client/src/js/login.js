@@ -32,13 +32,13 @@ class Login extends Component {
             </button>
 
             <button>
-                <Link to={'/'} >
+                <Link to={'/{`${SERVER_ROOT}/auth/facebook`}'}  >
                 Login with Facebook
                 </Link>
             </button>
 
             <button>
-                <Link to={'/'} >
+                <Link to={'/{`${SERVER_ROOT}/auth/google`}'} >
                 Login with Google
                 </Link>
             </button>

@@ -9,6 +9,7 @@ export const initialState = {
 	winner: null,
 	loser: null,
 	gameCompleted: false,
+	seconds:6,
 	players:null,
 };
 
@@ -81,6 +82,13 @@ export default function reducer (state = initialState, action) {
 	  	{runningTotal: total}, {currentPlayer:state.currentPlayer});
 	  console.log(newState);
 	  return newState;
+
+	  case actions.SUBTRACT_SECOND :
+	let newCount = state.seconds -= 1;
+		let subtractedState = Object.assign({}, state,
+		 { seconds: newCount});
+		
+	return subtractedState;
 
 	}
 	return state;
