@@ -6,6 +6,7 @@
 //mongo ds139360.mlab.com:39360/21-diamonds -u 21diamonds -p 21diamonds
 //mlab URI connection:  mongodb://21diamonds:21diamonds@ds139360.mlab.com:39360/21-diamonds
 // 'mongodb://localhost/21-diamonds-test'
+console.log("client-id", process.env.FB_CLIENT_ID)
 module.exports = {
   'DB_URL': process.env.DATABASE_URL || global.DATABASE_URL || 'mongodb://localhost/21-diamonds-dev',
   'TEST_DB_URL': process.env.TEST_DATABASE_URL ||'mongodb://21diamonds:21diamonds@ds139360.mlab.com:39360/21-diamonds',

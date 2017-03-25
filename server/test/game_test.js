@@ -40,7 +40,7 @@ describe('POST endpoint', function () {
                    return Game.findById(res.body._id).exec();
                })
               .then(function (post) {
-        //console.log(post , "post");
+        
                     post.userId.should.equal(newGame.userId);
                     post.winner.should.equal(newGame.winner);
 
