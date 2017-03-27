@@ -1,13 +1,13 @@
 {
-  "name": "thinkful-full-stack-template-server",
+  "name": "21-Diamonds-Server",
   "version": "0.1.0",
-  "description": "Server portion of a full-stack starter template",
+  "description": "Server portion of application",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "NODE_ENV=development nodemon index.js",
     "test": "mocha --recursive"
   },
-  "author": "Joe Turner <jturner@thinkful.com>",
+  "author": "Roberto Quezada <sgtquezada@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.17.1",

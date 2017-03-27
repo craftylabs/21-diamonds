@@ -2,11 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const findOrCreate = require('mongoose-findorcreate');
 
-const userSchema = mongoose.Schema({
-  facebook: {
-    userId: String,
-    email: String
-  },
+const userSchema = Schema({
+  facebookId:  String,
+  email: String,
   firstName: String,
   lastName: String,
   displayName: String,
@@ -41,6 +39,5 @@ userSchema.methods.apiRepr = function () {
 
 
 
-//userSchema.plugin(findOrCreate);
-const User = mongoose.model('User', userSchema);
-module.exports = { User }
+userSchema.plugin(findOrCreate);
+module.exports = mongoose.model('User', userSchema);
