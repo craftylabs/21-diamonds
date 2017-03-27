@@ -9,25 +9,27 @@ class GamePlay extends Component {
 		super(props);
 		this.submitNumChoice = this.submitNumChoice.bind(this);
 		this.recursiveTimer = this.recursiveTimer.bind(this);
-		this.countdown = setInterval(this.recursiveTimer,1000);
+		
+		this.diamonds = [];
+		this.i = 0;
 	}
 
 	submitNumChoice(event) {
 		// event.preventDefault();
 		console.log(event.target.value);
-		this.props.dispatch(actions.addChoiceToTotal(event.target.value, 1));
+		this.props.dispatch(actions.addChoiceToTotal(event.target.value, this.props.currentPlayer));
 
 	}
 
 	recursiveTimer() {
 		
-
-		if(this.props.seconds === 0) {
+		console.log("MADE IT INSIDE THE RECURSIVE TIMER");
+		if(this.props.seconds <= 0) {
 
 			clearInterval(this.countdown);
-			let randomNumber = Math.floor(Math.random() *3+1);
+			
 
-			this.props.dispatch(actions.addChoiceToTotal(randomNumber, this.props.currentPlayer));
+			this.props.dispatch(actions.addChoiceToTotal(null, this.props.currentPlayer));
 		}
 
 		
@@ -35,7 +37,7 @@ class GamePlay extends Component {
 			this.props.dispatch(actions.subtractSecond());
 
 		}
-		if(this.props.seconds === 6) {
+		if(this.props.seconds === 4) {
 
 			this.countdown;
 			
@@ -48,25 +50,37 @@ class GamePlay extends Component {
 
 
 	componentDidMount() {
-		
+
 		if(this.props.players === null) {
 			this.props.dispatch(actions.makeNewGame(2));
 		}
 
-		if(this.props.seconds === 6) {
-
-
-			this.recursiveTimer();
-		}
 	}
+
+	componentWillUpdate() {
+	
+		if (this.props.players[this.props.currentPlayer -1].ai === true) {
+			console.log("MADE IT TO AI ACTION");
+			this.props.dispatch(actions.addChoiceToTotal(null, this.props.currentPlayer));
+		}
+ 	
+
+}
 
 
 	render() {
+
+
+		for ( this.i = 0; this.i < this.props.runningTotal ; this.i += 1) {
+			this.diamonds.push(<img  alt="Diamond gamepiece" src="../../TheDiamond.png"/>)
+		}
+		
 		return (
 			<div className="GamePlay">
 			<Header />
 			<p>Player 1 vs. Computer</p>
-			<img alt="game-play-canvas" src="http://placehold.it/350x350" />
+			<div>{this.diamonds}</div>
+
 			<p>count: {this.props.runningTotal}</p>
 			<div onClick={this.submitNumChoice}>
 			<button value="1"> 1 </button>

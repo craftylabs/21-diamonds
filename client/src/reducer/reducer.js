@@ -50,13 +50,18 @@ export default function reducer (state = initialState, action) {
 	  return theState;
 
 	case actions.ADD_CHOICE_TO_TOTAL :
+	let increment;
+	console.log("THE CURRENT PLAYER IS", state.currentPlayer);
+	 if( state.players[state.currentPlayer - 1].ai || action.numChoice === null ) {
 
-	  let increment = parseInt(action.numChoice, 10);
+		 increment = Math.ceil(Math.random() *3);
+		 console.log("THE AI WENT AND ADDED", increment);
+	}
+	else {
+		 increment = parseInt(action.numChoice, 10);
+	}
 
-	  let total = increment + state.runningTotal;
-
-	console.log(total);
-
+    let total = increment + state.runningTotal;
 	  if ( state.currentPlayer >= state.numberOfPlayers) {
 
 	  	state.currentPlayer = 1;
@@ -79,16 +84,19 @@ export default function reducer (state = initialState, action) {
 	  }
 	 
 	  let newState = Object.assign({}, state, 
-	  	{runningTotal: total}, {currentPlayer:state.currentPlayer});
+	  	{runningTotal: total}, {currentPlayer:state.currentPlayer, seconds:6});
 	  console.log(newState);
 	  return newState;
 
 	  case actions.SUBTRACT_SECOND :
 	let newCount = state.seconds -= 1;
+
+
 		let subtractedState = Object.assign({}, state,
 		 { seconds: newCount});
-		
+		console.log("THE NUMBER OF SECONDS IS", state.seconds);
 	return subtractedState;
+
 
 	}
 	return state;

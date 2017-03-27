@@ -16,4 +16,5 @@ export const SUBTRACT_SECOND = "SUBTRACT_SECOND";
 export const subtractSecond = () => ({
 	type: SUBTRACT_SECOND
 
-})
+});
+
