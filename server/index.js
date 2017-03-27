@@ -1,5 +1,4 @@
-require('dotenv').load();
-//console.log(process.env);
+require('dotenv').config();
 
 const path = require('path');
 const express = require('express');
@@ -9,7 +8,6 @@ mongoose.Promise = global.Promise;
 const {DB_URL, PORT} = require('./config/config');
 
 const app = express();
-mongoose.Promise = global.Promise;
 require('./config/express')(app, passport);
 // bootstrap passport config
 require('./config/passport')(passport);
