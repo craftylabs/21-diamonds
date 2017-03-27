@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const express =  require('express');
 const path = require('path');
 const config = require('./config');
+const routes = require('../routes');
 
 module.exports = (app, passport) => {
   app.use(function(req, res, next) {
@@ -25,7 +26,5 @@ module.exports = (app, passport) => {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
 
-  
-  const routes = require('../routes');
   app.use('/api', routes);
 }
