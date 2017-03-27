@@ -18,15 +18,24 @@ module.exports = (passport) => {
     clientID: config.facebookAuth.clientID,
     clientSecret: config.facebookAuth.clientSecret,
     callbackURL: config.facebookAuth.callbackURL,
-    profileFields:['id','displayName','emails']
+    profileFields:['id', 'displayName', 'emails', 'name']
   },
   (accessToken, refreshToken, profile, done) => {
-    User.findOrCreate({ 'facebook.id': profile.id, 'displayName': profile.displayName, 'firstName': profile.givenName, 'lastName': profile.familyName, 'email': emails[0].value},
+    console.log('fb user profile: ', profile);
+    User.findOrCreate(
+      { facebookId : profile.id, 
+        displayName : profile.displayName,
+        firstName: profile.name.givenName,
+        lastName: profile.name.familyName,
+        email: profile.emails[0].value,
+        token: accessToken
+      },
       function(err, user) {
         if (err) {
           return done(err);
-        }
-        return done(null, user);
+        } else {
+          return done(null, user);
+        }     
       });
   }
   ));

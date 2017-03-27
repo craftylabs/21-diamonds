@@ -3,14 +3,19 @@ const Schema = mongoose.Schema;
 const findOrCreate = require('mongoose-findorcreate');
 
 const userSchema = Schema({
-  facebook: {
-    id: String,
-    email: String
-  },
+  facebookId:  String,
+  email: String,
   firstName: String,
   lastName: String,
   displayName: String,
-  createdAt: Date
+  createdAt: Date,
+  token: String,
+  score: String,
+  rank: Number,
+  gamesPlayed: Number,
+  gamesWon: Number,
+  gamesLost: Number,
+  longestWinningStreak: Number
 });
 
 userSchema.plugin(findOrCreate);
