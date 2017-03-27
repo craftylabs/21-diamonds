@@ -18,7 +18,8 @@
     "morgan": "^1.8.1",
     "nodemon": "^1.11.0",
     "passport": "^0.3.2",
-    "passport-facebook": "^2.1.1"
+    "passport-facebook": "^2.1.1",
+    "zombie": "^5.0.5"
   },
   "devDependencies": {
     "chai": "^3.5.0",
