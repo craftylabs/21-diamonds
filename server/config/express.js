@@ -9,7 +9,7 @@ module.exports = (app, passport) => {
     res.header('Access-Control-Allow-Origin', config.CLIENT_ROOT);
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     next();
-});
+  });
   // Serve the built client
   app.use(express.static(path.resolve(__dirname, '../client/build')));
   // Unhandled requests which aren't for the API should serve index.html so
