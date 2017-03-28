@@ -1,39 +1,51 @@
+require('dotenv').config();
+
 const path = require('path');
 const express = require('express');
+const passport = require('passport');
+const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+const {DB_URL, PORT} = require('./config/config');
 
 const app = express();
-
-// API endpoints go here!
-
-
-// Serve the built client
-app.use(express.static(path.resolve(__dirname, '../client/build')));
-
-// Unhandled requests which aren't for the API should serve index.html so
-// client-side routing using browserHistory can function
-app.get(/^(?!\/api(\/|$))/, (req, res) => {
-    const index = path.resolve(__dirname, '../client/build', 'index.html');
-    res.sendFile(index);
-});
+require('./config/express')(app, passport);
+// bootstrap passport config
+require('./config/passport')(passport);
 
 let server;
-function runServer(port=3001) {
-    return new Promise((resolve, reject) => {
-        server = app.listen(port, () => {
-            resolve();
-        }).on('error', reject);
+// this function connects to our database, then starts the server
+function runServer(databaseUrl=DB_URL, port=PORT) {
+  return new Promise((resolve, reject) => {
+    mongoose.connect(databaseUrl, err => {
+      if (err) {
+        return reject(err);
+      }
+      server = app.listen(port, () => {
+        console.log(`Your app is listening on port ${port} in ${process.env.NODE_ENV} mode`);
+        resolve();
+      })
+      .on('error', err => {
+        mongoose.disconnect();
+        reject(err);
+      });
     });
+  });
 }
 
+// this function closes the server, and returns a promise. we'll
+// use it in our integration tests
 function closeServer() {
-    return new Promise((resolve, reject) => {
-        server.close(err => {
-            if (err) {
-                return reject(err);
-            }
-            resolve();
-        });
-    });
+  return mongoose.disconnect().then(() => {
+     return new Promise((resolve, reject) => {
+       console.log('Closing server');
+       server.close(err => {
+           if (err) {
+               return reject(err);
+           }
+           resolve();
+       });
+     });
+  });
 }
 
 if (require.main === module) {
