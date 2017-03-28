@@ -19,5 +19,5 @@ else {
             'localhost:8080/api': 'http://localhost:3001'
         }
     }));
-    runServer();
+    app.listen(process.env.PORT || 8080);
 }
