@@ -6,8 +6,8 @@ module.exports = {
   CLIENT_PORT: process.env.CLIENT_PORT || 8080,
   CLIENT_ROOT: 'http://localhost:8080',
   facebookAuth : {
-        clientID      : process.env.FB_CLIENT_ID,
-        clientSecret  : process.env.FB_CLIENT_SECRET,
+        clientID      : '774058129424522',
+        clientSecret  : '10d10e1f1a408b283310a06d6cfa7893',
         callbackURL   : 'http://localhost:8080/api/auth/facebook/callback'
     },
   twitterAuth : {
