@@ -30,18 +30,13 @@ class Login extends Component {
                 Back
                 </Link>
             </button>
-
+            <a href={'/api/auth/facebook'}>
             <button>
-                <Link to={'/{`${SERVER_ROOT}/auth/facebook`}'}  >
-                Login with Facebook
-                </Link>
+                
+            Login with Facebook
+                
             </button>
-
-            <button>
-                <Link to={'/{`${SERVER_ROOT}/auth/google`}'} >
-                Login with Google
-                </Link>
-            </button>
+            </a>
 
             <button>
                 <Link to={'/gamemodes'} onClick={this.submitNewGame}>

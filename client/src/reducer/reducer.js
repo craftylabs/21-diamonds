@@ -9,7 +9,7 @@ export const initialState = {
 	winner: null,
 	loser: null,
 	gameCompleted: false,
-	seconds:6,
+	seconds:5,
 	players:null,
 };
 
@@ -71,7 +71,7 @@ export default function reducer (state = initialState, action) {
 	  	state.currentPlayer += 1;
 	  }
 
-	  if (total >= 17) {
+	  if (state.runningTotal >= 17) {
 
 	  	let gameLoser = state.currentPlayer;
 	  	let gameIsDone = true;
