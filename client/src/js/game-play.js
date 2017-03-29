@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import store from '../store.js';
 import * as actions from '../actions/actions';
 
+import GameResult from './game-result';
+
 class GamePlay extends Component {
 	constructor(props) {
 		super(props);
@@ -98,10 +100,13 @@ checkAI() {
 	render() {
 		console.log("THE CURRENT PLAYER IS", this.props.currentPlayer);
 
-	
+		if (this.props.gameCompleted) {
+			return (<GameResult />
+				)
+		}
 
-		
-		
+		else {
+				
 		return (
 			<div className="GamePlay">
 			<Header />
@@ -118,6 +123,7 @@ checkAI() {
 			</div>
 
 			)
+		}
 	}
 }
 
@@ -126,7 +132,8 @@ const mapStateToProps = (state, props) => {
 		runningTotal: state.runningTotal,
 		seconds: state.seconds,
 		players: state.players,
-		currentPlayer: state.currentPlayer
+		currentPlayer: state.currentPlayer,
+		gameCompleted: state.gameCompleted
 	}
 }
 

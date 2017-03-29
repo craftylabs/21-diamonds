@@ -6,11 +6,19 @@ function Instructions() {
 	return (
 		<div>
 		<Header />
-		<ul>
-		<li> do this and win </li>
-		<li> do that and lose </li>
-		</ul>
 
+		<p> 21 Diamonds is a mathematical game of strategy in which two players take turns adding diamonds to a heap. On each turn, a player must add at least one diamond.
+		</p>
+
+		<p><strong>Goal</strong>: Do not be the last player to add a diamond to the heap.
+		</p>
+
+		<ul>
+		<li> player 1 always goes first</li>
+		<li> player can select to add 1, 2, or 3 diamonds to the heap </li>
+		<li> if a {`player's`} move would cause them to lose, the game knows that and declares that player the loser. 
+		</li>
+		</ul>
             <button>
                 <Link to={'/app'}>
                 Back

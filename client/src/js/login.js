@@ -4,6 +4,7 @@ import Button from './button';
 import {connect} from 'react-redux';
 
 import {Link} from 'react-router-dom';
+import GameMode from './game-mode';
 
 import * as actions from '../actions/actions';
 
@@ -20,6 +21,15 @@ class Login extends Component {
 
       render() {
 
+      if (this.props.loggedIn) {
+        return (
+
+          <GameMode />
+
+          )
+      }
+
+      else {
       return (
       <div>
        <Header />
@@ -30,14 +40,13 @@ class Login extends Component {
                 Back
                 </Link>
             </button>
-            <a href={'/api/auth/facebook'}>
+
+            <a href='/api/auth/facebook'>
             <button>
-                
-            Login with Facebook
-                
+                  Login with Facebook
             </button>
             </a>
-
+           
             <button>
                 <Link to={'/gamemodes'} onClick={this.submitNewGame}>
                 Play as Guest
@@ -49,6 +58,13 @@ class Login extends Component {
       
       </div>
     )
+  }
+ }
+}
+
+const mapStateToProps = (state, props) => {
+  return {
+    loggedIn: state.loggedIn
   }
 }
 
