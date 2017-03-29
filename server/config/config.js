@@ -1,6 +1,6 @@
 module.exports = {
   DB_URL: process.env.DATABASE_URL || global.DATABASE_URL || 'mongodb://21diamonds:21diamonds@ds139360.mlab.com:39360/21-diamonds',
-  TEST_DB_URL: process.env.TEST_DATABASE_URL || 'mongodb://21diamonds:21diamonds@ds139360.mlab.com:39360/21-diamonds',
+  TEST_DB_URL: process.env.TEST_DATABASE_URL || 'mongodb://localhost/21-diamonds-test',
   PORT: process.env.PORT || 3001,
   CLIENT_HOST: process.env.CLIENT_HOST || 'localhost',
   CLIENT_PORT: process.env.CLIENT_PORT || 8080,

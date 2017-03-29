@@ -1,24 +1,7 @@
+const gameCtrl = require('./game_controller');
 
-  const { Game } = require('../../models/game');
-
-
-  module.exports = (router) => {
-    router.post('/games',(req, res) => {
-  Game
-     .create ({
-         userId : req.body.userId,
-         players:[{player:req.body.player}],
-         winner: req.body.winner,
-         dateCompleted: req.body.dateCompleted
-     })
-     .then (response => {
-         console.log('RESPONSE OBJECT (QUESTIONS ADDED)', response)
-         res.status(201).json(response.apiRepr())
-     })
-     .catch (err => {          
-         res.status(500).json({error: err})
-     })  
-  });
+module.exports = (router) => {
+  router.post('/games',gameCtrl.saveGame);
 
   router.get('/games/:userId', (req,res) => {
    Game
