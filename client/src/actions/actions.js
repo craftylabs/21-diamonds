@@ -63,4 +63,6 @@ export const logIn = user => (dispatch) => {
 		console.log(error);
 		dispatch(logInError(error));
 	})
+
 }
+
