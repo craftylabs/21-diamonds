@@ -11,11 +11,26 @@ export const initialState = {
 	gameCompleted: false,
 	seconds:6,
 	players:null,
-};
+	loggedIn: false,
+	accessToken: null,
+	user: null
+}
 
 export default function reducer (state = initialState, action) {
 	switch(action.type) {
-	
+
+	case actions.USER_INFO_SUCCESS :
+	console.log(action);
+	state = Object.assign({}, state, {user: action.user})
+
+	return state;
+
+	case actions.RESET_GAME : 
+	console.log("made it to reset game");
+	state = Object.assign({}, state, initialState);
+	return state;
+
+
 	case actions.MAKE_NEW_GAME : 
 
 	console.log(action);

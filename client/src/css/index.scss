@@ -1,0 +1,167 @@
+/*SASS VARIABLES*/
+$header-font-size:2.2rem;
+$sub-header-font-size:1.1rem;
+$dosis-font:'Dosis', sans-serif;
+
+
+/*IMPORT STATEMENTS*/
+@import url('https://fonts.googleapis.com/css?family=Dosis:300,400,500,600');
+
+/*MOBILE LAYOUT*/
+
+h2{
+	font-family: $dosis-font;
+	font-size:$header-font-size;
+	text-align:center;
+	padding:0.5%;
+}
+h3{
+	font-family:$dosis-font;
+	font-size: $sub-header-font-size;
+	text-align: center;
+	padding:1%;
+}
+
+*{
+	color:#F1FAEE;
+	font-family:$dosis-font;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color:#E63946;
+  text-align: center;
+}
+
+a {
+	text-decoration: none;
+}
+
+button {
+	min-width:58px;
+	max-width:200px;
+	min-height:55px;
+	max-height:220px;
+	background-color:#457B9D;
+	border-radius:7px;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+	box-shadow:0px 3px 8px 1px black;
+	font-size:0.81em;
+	display:inline-block;
+}
+
+li{
+	margin-top:3%;
+	font-size:1.2em;
+	min-width:33%;
+
+}
+
+ol{
+	min-width:33%;
+	text-align: center;
+}
+
+.button-1 {
+	margin-right:6px;
+	font-weight: 300;
+
+}
+
+.button-2 {
+	margin-left:6px;
+	font-weight: 300;
+}
+
+.button--wide {
+	margin-top:20px;
+	min-width:175px;
+	box-shadow: 0px 0px;
+	font-weight: 600;
+	font-size:1.0em;
+}
+
+.button-back {
+	min-width:33%;
+	font-size: 1.1em;
+	margin-top:3%;
+}
+
+.button-facebook {
+	min-width:33%;
+	margin-top:3%;
+	font-size: 1.2em;
+}
+
+.button-guest {
+	min-width:33%;
+	margin-top:4%;
+	font-size:1.2em;
+}
+
+.button-singleplayer {
+	min-width:33%;
+	margin-top:4%;
+	font-size:1.2em;
+}
+
+.button-multiplayer {
+	min-width: 33%;
+	margin-top:4%;
+	font-size:1.2em;
+}
+
+table{
+	margin-top:5%;
+	margin-left:2%;
+	margin-right:2%;
+	width:95%;
+	border:2px dashed black;
+	padding:1%;
+}
+
+tr{
+	border:2px solid white;
+}
+
+td{
+	border:2px solid white;
+	background-color:#457B9D;
+}
+
+.gameBoard {
+
+	width:80%;
+	height:auto;
+	border:3px solid black;
+	margin-left:10%;
+	margin-right:10%;
+}
+
+img{
+	width:25%;
+	height:150px;
+}
+
+.gameBoard-choices {
+	position:absolute;
+	text-align:center;
+	align-content: center;
+	top:86%;
+	margin-left:35%;
+	margin-right:35%;
+	margin-bottom:0%;
+	margin-top:1%;
+}
+
+@media  (max-width:594px) {
+
+	.gameBoard-choices {
+		margin-left:15%;
+		margin-right:15%;
+	}
+}
