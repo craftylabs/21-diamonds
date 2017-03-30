@@ -104,6 +104,7 @@ checkAI() {
 			<div className="GamePlay">
 			<Header />
 			<p>Player 1 vs. Computer</p>
+			<p> {this.props.user.firstName} </p>
 			<div className="gameBoard">{this.diamonds}</div>
 
 			
@@ -127,7 +128,8 @@ const mapStateToProps = (state, props) => {
 		seconds: state.seconds,
 		players: state.players,
 		currentPlayer: state.currentPlayer,
-		gameCompleted: state.gameCompleted
+		gameCompleted: state.gameCompleted,
+		user: state.user
 	}
 }
 

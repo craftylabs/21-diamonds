@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Header from './header';
 import Button from './button';
 import {connect} from 'react-redux';
+import cookie from 'react-cookie';
 
 import {Link} from 'react-router-dom';
 import GameMode from './game-mode';
@@ -11,11 +12,17 @@ import * as actions from '../actions/actions';
 class Login extends Component {
       constructor(props) {
         super(props);
-        this.fbLogIn = this.fbLogIn.bind(this);        
+        this.getUserInfo = this.getUserInfo.bind(this);        
       }
 
-      fbLogIn(event) {
-        this.props.dispatch(actions.logIn());
+      getUserInfo(event) {
+        event.preventDefault();
+        window.location.href='/api/auth/facebook';
+        let savedCookie = cookie.load('accessToken');        
+        if (savedCookie !== null) {
+         this.props.dispatch(actions.getUserInfo('10110600674071001'));         
+        }
+
       }
 
       render() {
@@ -41,27 +48,16 @@ class Login extends Component {
             </button>
             <br/>
 
-            <a href='/api/auth/facebook'>
-            <button className='button-facebook'>
+            <button className='button-facebook' onClick={this.getUserInfo}>
                   Login with Facebook
             </button>
-            </a>
            <br/>
            
             <button className='button-guest'>
                 <Link to={'/gamemodes'} onClick={this.submitNewGame}>
-
-            <button onClick={this.fbLogIn}>
-                  Login with Facebook
-            </button>
- 
-           
-            <button>
-                <Link to={'/gamemodes'}>
                 Play as Guest
                 </Link>
             </button>
-
 
         </div>
       

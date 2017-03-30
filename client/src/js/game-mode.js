@@ -3,6 +3,7 @@ import Button from './button';
 import Header from './header';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import cookie from 'react-cookie';
 
 import * as actions from '../actions/actions';
 
@@ -22,7 +23,7 @@ class GameMode extends Component {
     return (
       <div className="GameMode">
           <Header />
-
+            <p>{cookie.load('accessToken')}</p>
             <button className='button-back'>
                 <Link to={'/login'}>
                 Back
