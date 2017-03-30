@@ -22,21 +22,30 @@ module.exports = (passport) => {
   },
   (accessToken, refreshToken, profile, done) => {
     console.log('fb user profile: ', profile);
-    User.findOrCreate(
-      { facebookId : profile.id, 
-        displayName : profile.displayName,
-        firstName: profile.name.givenName,
-        lastName: profile.name.familyName,
-        email: profile.emails[0].value,
-        token: accessToken
-      },
-      function(err, user) {
-        if (err) {
-          return done(err);
-        } else {
-          return done(null, user);
-        }     
-      });
+    User.findOne({ facebookId: profile.id}, function(err, user) {
+      if (err) {
+        return done(err);
+      }
+      if (user) {
+        return done(null, user); // we found a user in the db so return that user!
+      } else {
+          user = new User({
+          facebookId: profile.id,
+          displayName : profile.displayName,
+          firstName: profile.name.givenName,
+          lastName: profile.name.familyName,
+          email: profile.emails[0].value,
+          token: accessToken
+        });
+        user.save(function(err) {
+          if (err) {
+            return done(err);
+          } else {
+            return done(null, user);
+          } 
+        })
+      }
+    });
   }
   ));
 }

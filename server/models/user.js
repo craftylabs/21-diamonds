@@ -12,28 +12,21 @@ const userSchema = Schema({
   token: String,
   score: Number,
   rank: Number,
-  gamesPlayed: Number,
+  gamesPlayed: {type: Schema.Types.ObjectId, ref: 'Game', required: true},
   gamesWon: Number,
   gamesLost: Number,
   longestWinningStreak: Number
 });
 
 
-userSchema.methods.apiRepr = function () {
+userSchema.methods.getCleanUser = function () {
    return {
-           _id:this.id,
-     facebook: this.facebook,
+     id: this._id,
+     facebookId: this.facebookId,
      firstName: this.firstName,
      lastName: this.lastName,
-     displayName: this.displayName,
-     createdAt: this.createdAt,
      token: this.token,
-     score: this.score,
-     rank: this.rank,
-     gamesPlayed: this.gamesPlayed,
-     gamesWon: this.gamesWon,
-     gamesLost: this.gamesLost,
-     longestWinningStreak: this.longestWinningStreak
+     email: this.email
    }
 }
 
