@@ -14,7 +14,7 @@ gameSchema.methods.getGameInfo = function() {
         players:this.players,
         loser: this.loser,
         gameMode:this.gameMode,
-        dateCompleted: this.dateCompleted,
+        dateCompleted: this.dateCompleted
         
     }
 }
