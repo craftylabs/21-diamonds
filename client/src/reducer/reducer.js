@@ -11,7 +11,7 @@ export const initialState = {
 	gameCompleted: false,
 	seconds:6,
 	players:null,
-	loggedIn: true,
+	loggedIn: false,
 	user: {
 		  id: null,
 		  facebookId: null,
@@ -24,7 +24,13 @@ export const initialState = {
 
 export default function reducer (state = initialState, action) {
 	switch(action.type) {
-	
+
+	case actions.RESET_GAME : 
+	console.log("made it to reset game");
+	state = Object.assign({}, state, initialState);
+	return state;
+
+
 	case actions.MAKE_NEW_GAME : 
 
 	console.log(action);

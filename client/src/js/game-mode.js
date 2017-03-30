@@ -14,6 +14,7 @@ class GameMode extends Component {
 
 
   submitNewGame(event) {
+    this.props.dispatch(actions.resetGame());
     this.props.dispatch(actions.makeNewGame(2));
   }
 

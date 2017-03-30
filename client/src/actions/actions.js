@@ -1,3 +1,8 @@
+export const RESET_GAME = "RESET_GAME";
+export const resetGame = () => ({
+	type: RESET_GAME
+});
+
 export const MAKE_NEW_GAME = "MAKE_NEW_GAME";
 export const makeNewGame = (players) => ({
 	type: MAKE_NEW_GAME,
@@ -15,7 +20,6 @@ export const addChoiceToTotal = (numChoice, player ) => ({
 export const SUBTRACT_SECOND = "SUBTRACT_SECOND";
 export const subtractSecond = () => ({
 	type: SUBTRACT_SECOND
-
 });
 
 export const LOG_IN_SUCCESS = "LOG_IN_SUCCESS";
