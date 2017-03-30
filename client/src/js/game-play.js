@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import store from '../store.js';
 import * as actions from '../actions/actions';
 
+import GameResult from './game-result';
+
 class GamePlay extends Component {
 	constructor(props) {
 		super(props);
@@ -72,13 +74,6 @@ class GamePlay extends Component {
 	}
 
 
-	stopTimer() {
-
-
-	}
-
-
-
 select(state) {
 	return state
 };
@@ -98,26 +93,32 @@ checkAI() {
 	render() {
 		console.log("THE CURRENT PLAYER IS", this.props.currentPlayer);
 
-	
+		if (this.props.gameCompleted) {
+			return (<GameResult />
+				)
+		}
 
-		
-		
+		else {
+				
 		return (
 			<div className="GamePlay">
 			<Header />
 			<p>Player 1 vs. Computer</p>
-			<div>{this.diamonds}</div>
+			<p> {this.props.user.firstName} </p>
+			<div className="gameBoard">{this.diamonds}</div>
 
-			<p>count: {this.props.runningTotal}</p>
-			<div onClick={this.submitNumChoice}>
+			
+			<div className="gameBoard-choices"onClick={this.submitNumChoice}>
 			<button value="1"> 1 </button>
 			<button value="2"> 2 </button>
 			<button value="3"> 3 </button>
-			<p>{this.props.seconds}</p>
+			<p className="gameBoard-timer">{this.props.seconds}</p>
+			<p className="gameBoard-count">count: {this.props.runningTotal}</p>
 			</div>
 			</div>
 
 			)
+		}
 	}
 }
 
@@ -126,7 +127,9 @@ const mapStateToProps = (state, props) => {
 		runningTotal: state.runningTotal,
 		seconds: state.seconds,
 		players: state.players,
-		currentPlayer: state.currentPlayer
+		currentPlayer: state.currentPlayer,
+		gameCompleted: state.gameCompleted,
+		user: state.user
 	}
 }
 
