@@ -29,42 +29,21 @@ describe('POST endpoint', function () {
           return chai.request(app)
                .post('/api/games')
                .send(newGame)
-               .then(function (res) {  
+               .then(res => { 
+                   
+                 console.log(res.body, 'response in post endpoint');
                    res.should.have.status(201);
-                   res.body.status.should.equal('success');
-                   res.body.info.should.be.a('object')
-                   return Game.findById(res.body.info.id).exec();
+                   res.should.be.json;
+                   res.body.should.deep.equal(Object.assign(newGame, {id: res.body.id}));
                })
-              .then(game => {
-                console.log(game)
-                console.log('newGame loser: ', newGame.loser)
-                game.loser.should.equal(newGame.loser);
-                game.players[0].should.equal(newGame.players[0]);
-              });
+              
   }); 
 })
-  
+ // return all games for one particular user.
 // describe('GET endpoint' , function () {
-//     it('should return all existing games', function() {    
-//       let res;
-//       return chai.request(app)
-//         .get('/api/games')
-//         .then(_res => {
-//           res = _res;
-//           res.should.have.status(200);
-//           // otherwise our db seeding didn't work
-//           res.body.should.have.length.of.at.least(1);
+   
 
-//           return Game.count();
-//         })
-//         .then( count => {
-//           // the number of returned posts should be same
-//           // as number of posts in DB
-//           res.body.should.have.length.of(count);
-//         });
-//     });
-
-//    it('should return game with right fields', function() {
+//    it('should return all games for user', function() {
 //      let resGame;
 //      return chai.request(app)
 //       .get('/api/games')
@@ -73,19 +52,16 @@ describe('POST endpoint', function () {
 //            res.should.be.json;
 //            res.body.should.be.a('array');
 //            res.body.should.have.length.of.at.least(1);
-
 //            res.body.forEach(function(post) {
 //             post.should.be.a('object');
-//           //   post.should.include.keys('_id', 'userId', 'players', 'winner', 'dateCompleted');
+          
 //           });
           
 //           resGame = res.body[0];
-//           console.log(resGame);
-//           return Game.findById(resGame._id).exec();
+//           console.log(resGame , 'INside get endpoint');
+//           return Game.find().exec();
 //       })
 //       .then( post => {
-//         resGame.userId.should.equal(post.userId);
-//         resGame.winner.should.equal(post.winner);
         
 //       });
 //    });

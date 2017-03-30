@@ -11,8 +11,25 @@ module.exports.saveGame = (req, res) => {
          loser,
          gameMode
      })
-     .then(game => res.status(201).json({status: 'success', info: game.getGameInfo()}))
+     .then(game => res.status(201).json(game.getGameInfo()))
      .catch (err => {          
          res.status(500).json({status: 'error', message: err})
      }); 
+}
+
+
+module.exports.getGame = (req,res) => {
+   
+    Game
+     .find({players: req.params.players})
+     .exec()
+     .then(game => {
+         console.log(game , 'game getting by id')
+       res.status(201).json(game.getGameInfo());
+     })
+     .catch(err => {
+       console.error(err);
+       res.status(500).json({status: 'error', message: err})
+     })
+
 }
