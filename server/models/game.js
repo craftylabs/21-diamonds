@@ -11,8 +11,11 @@ const gameSchema = mongoose.Schema({
 gameSchema.methods.getGameInfo = function() {
     return  {
         id: this._id,
+        players:this.players,
+        loser: this.loser,
+        gameMode:this.gameMode,
         dateCompleted: this.dateCompleted,
-        loser: this.loser
+        
     }
 }
 
