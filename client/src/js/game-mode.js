@@ -10,19 +10,21 @@ class GameMode extends Component {
       <div className="GameMode">
           <Header />
 
-            <button>
+            <button className='button-back'>
                 <Link to={'/login'}>
                 Back
                 </Link>
             </button>
+            <br/>
 
-            <button>
+            <button className='button-singleplayer'>
                 <Link to={'/gameplay'}>
                 Single Player
                 </Link>
             </button>
+            <br/>
 
-            <button>
+            <button className='button-multiplayer'>
                 <Link to={'/'}>
                 Multi Player
                 </Link>

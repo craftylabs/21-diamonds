@@ -14,19 +14,19 @@ class App extends Component {
           <h3> A modern spin to the timeless classic, Nim </h3>
         </div>
 
-            <button>
+            <button className='button-1'>
                 <Link to={'/login'} >
                 Start Game
                 </Link>
             </button>
 
-            <button>
+            <button className='button-2'>
                 <Link to={'/leaderboard'} >
                 Leaderboard
                 </Link>
             </button>
-
-            <button>
+            <br/>
+            <button className='button--wide'>
                 <Link to={'/instructions'} >
                 Instructions
                 </Link>

@@ -74,13 +74,6 @@ class GamePlay extends Component {
 	}
 
 
-	stopTimer() {
-
-
-	}
-
-
-
 select(state) {
 	return state
 };
@@ -111,14 +104,15 @@ checkAI() {
 			<div className="GamePlay">
 			<Header />
 			<p>Player 1 vs. Computer</p>
-			<div>{this.diamonds}</div>
+			<div className="gameBoard">{this.diamonds}</div>
 
-			<p>count: {this.props.runningTotal}</p>
-			<div onClick={this.submitNumChoice}>
+			
+			<div className="gameBoard-choices"onClick={this.submitNumChoice}>
 			<button value="1"> 1 </button>
 			<button value="2"> 2 </button>
 			<button value="3"> 3 </button>
-			<p>{this.props.seconds}</p>
+			<p className="gameBoard-timer">{this.props.seconds}</p>
+			<p className="gameBoard-count">count: {this.props.runningTotal}</p>
 			</div>
 			</div>
 

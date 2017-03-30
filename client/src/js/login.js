@@ -35,19 +35,21 @@ class Login extends Component {
        <Header />
 
         <div className="login">
-            <button>
+            <button className='button-back'>
                 <Link to={'/app'}>
-                Back
+                Main Menu
                 </Link>
             </button>
+            <br/>
 
             <a href='/api/auth/facebook'>
-            <button>
+            <button className='button-facebook'>
                   Login with Facebook
             </button>
             </a>
+           <br/>
            
-            <button>
+            <button className='button-guest'>
                 <Link to={'/gamemodes'} onClick={this.submitNewGame}>
                 Play as Guest
                 </Link>
