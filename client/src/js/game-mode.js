@@ -4,7 +4,19 @@ import Header from './header';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
+import * as actions from '../actions/actions';
+
 class GameMode extends Component {
+  constructor(props) {
+    super(props);
+    this.submitNewGame = this.submitNewGame.bind(this);
+  }
+
+
+  submitNewGame(event) {
+    this.props.dispatch(actions.makeNewGame(2));
+  }
+
   render() {
     return (
       <div className="GameMode">
@@ -17,7 +29,7 @@ class GameMode extends Component {
             </button>
 
             <button>
-                <Link to={'/gameplay'}>
+                <Link to={'/gameplay'} onClick={this.submitNewGame}>
                 Single Player
                 </Link>
             </button>

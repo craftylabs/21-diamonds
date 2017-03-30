@@ -11,9 +11,16 @@ export const initialState = {
 	gameCompleted: false,
 	seconds:6,
 	players:null,
-	loggedIn: null,
-	userName: 'Will and Spencer'
-};
+	loggedIn: true,
+	user: {
+		  id: null,
+		  facebookId: null,
+		  firstName: null,
+		  lastName: null,
+		  token: null,
+		  email: null
+	}
+}
 
 export default function reducer (state = initialState, action) {
 	switch(action.type) {

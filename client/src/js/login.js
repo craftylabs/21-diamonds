@@ -11,12 +11,11 @@ import * as actions from '../actions/actions';
 class Login extends Component {
       constructor(props) {
         super(props);
-        this.submitNewGame = this.submitNewGame.bind(this);        
+        this.fbLogIn = this.fbLogIn.bind(this);        
       }
 
-      submitNewGame(event) {
-        console.log(event);
-        this.props.dispatch(actions.makeNewGame(2));
+      fbLogIn(event) {
+        this.props.dispatch(actions.logIn());
       }
 
       render() {
@@ -41,14 +40,13 @@ class Login extends Component {
                 </Link>
             </button>
 
-            <a href='/api/auth/facebook'>
-            <button>
+            <button onClick={this.fbLogIn}>
                   Login with Facebook
             </button>
-            </a>
+ 
            
             <button>
-                <Link to={'/gamemodes'} onClick={this.submitNewGame}>
+                <Link to={'/gamemodes'}>
                 Play as Guest
                 </Link>
             </button>
@@ -68,4 +66,4 @@ const mapStateToProps = (state, props) => {
   }
 }
 
-export default connect ()(Login);
+export default connect (mapStateToProps)(Login);
