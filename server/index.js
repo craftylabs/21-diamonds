@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+console.log(process.env);
 const path = require('path');
 const express = require('express');
 const passport = require('passport');
