@@ -8,10 +8,10 @@ export const initialState = {
 	numberOfPlayers: null,
 	winner: null,
 	loser: null,
-	gameCompleted: false,
+	gameCompleted: true,
 	seconds:6,
 	players:null,
-	loggedIn: true,
+	loggedIn: false,
 	accessToken: null,
 	user: null
 }

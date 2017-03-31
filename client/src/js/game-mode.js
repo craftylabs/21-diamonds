@@ -33,16 +33,17 @@ class GameMode extends Component {
 
             <button className='button-singleplayer'>
                 <Link to={'/gameplay'} onClick={this.submitNewGame}>
-                Single Player
+                Play Now !
                 </Link>
             </button>
             <br/>
-
+{/*} /// WIP - Multiplayer
             <button className='button-multiplayer'>
                 <Link to={'/'}>
                 Multi Player
                 </Link>
             </button>
+*/}
       </div>
     );
   }
