@@ -19,23 +19,33 @@ describe('User', function () {
 
 
     describe('GET endpoint' , function () {
+
        it('should return user with right fields', function() {
-          const facebookId ='1775864242731122';
-          let resUser;
-          //console.log(User.getCleanUser, 'Getingclean')
-          return User
-                  .findOne()
-                  .then(resUser => {
-                  resUser = resUser;
-                  return chai.request(app)
-                  .get(`/api/users/${facebookId}`);
-                  
-                  })
-                  .then(res => {
-                    res.should.have.status(200);  
-                    res.should.be.a('object');  
-                    res.body.should.include.keys('id','facebookId','firstName','lastName','token','email');
-                  })
+           let newUser;
+           let resUser;
+            newUser = new User({
+               facebookId:'456253723628',
+               firstName:'testing',
+               lastName:'user',
+               email:'testinguser@gmail.com'
+           })
+     
+            newUser.save();
+            return chai.request(app)
+                        .get(`/api/users/${newUser.facebookId}`) 
+                        .then(res => {
+                            resUser =res;    
+                            res.should.have.status(200);  
+                            res.should.be.a('object');  
+                            res.body.should.include.keys('id','facebookId','firstName','lastName','email');
+                            return User.findOne({facebookId: newUser.facebookId}).exec();  
+                        })
+                        .then(user => {
+
+                            user.firstName.should.equal(resUser.body.firstName);
+                            user.lastName.should.equal(resUser.body.lastName);
+                            user.email.should.equal(resUser.body.email);
+                        })
        });
     });
 

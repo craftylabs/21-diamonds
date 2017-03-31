@@ -12,7 +12,7 @@ const userSchema = Schema({
   token: String,
   score: Number,
   rank: Number,
-  gamesPlayed: {type: Schema.Types.ObjectId, ref: 'Game', required: true},
+  gamesPlayed: {type: Schema.Types.ObjectId, ref: 'Game'},
   gamesWon: Number,
   gamesLost: Number,
   longestWinningStreak: Number
