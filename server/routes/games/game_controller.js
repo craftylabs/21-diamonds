@@ -1,11 +1,17 @@
 const { Game } = require('../../models/game');
-const ObjectID = require('mongodb').ObjectID;
+const User = require('../../models/user');
 
-module.exports.saveGame = (req, res) => {
-  const { players, loser, gameMode } = req.body;
+module.exports.saveGame = async (req, res) => {
+  let { players, loser, gameMode } = req.body;
   if (!players || !loser || !gameMode) {
     res.status(400).json({ status: 'error', message: 'missing required fields'});
   }
+  let AIUser = await User.findOne({ firstName: 'AI'});
+  if (loser === 'AI') {
+    console.log('AI lost!')
+    loser = AIUser._id
+  } 
+  console.log('loser:', loser);
   Game
      .create ({
          players,

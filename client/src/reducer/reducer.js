@@ -10,10 +10,13 @@ export const initialState = {
 	winner: null,
 	loser: null,
 	gameCompleted: false,
+	games: [],
+	gameMode: '',
 	seconds:6,
 	players:null,
 	loggedIn: !!cookie.load('facebookId'),
 	user: '',
+	errorMessage: ''
 }
 
 export default function reducer (state = initialState, action) {
@@ -23,7 +26,6 @@ export default function reducer (state = initialState, action) {
 		state = Object.assign({}, state, {user: action.user});
 		console.log('state at logged in:', state);
 		return state;
-		break;
 
 	case actions.RESET_GAME : 
 	console.log("made it to reset game");
@@ -41,10 +43,17 @@ export default function reducer (state = initialState, action) {
 							});
 	console.log('state after reset: ', state);
 	return state;
-	break;
+
+
+	case actions.SAVE_GAME_SUCCESS:
+		state = Object.assign({}, state, { games: [action.gameId]});
+		return state;
+
+	case actions.SAVE_GAME_ERROR:
+		state = Object.assign({}, state, { errorMessage: action.error});
+		return state;
 
 	case actions.MAKE_NEW_GAME : 
-		console.log(action);
 		let players = [];
 		for(var i = 0; i<action.players; i++) {
 		
@@ -65,9 +74,8 @@ export default function reducer (state = initialState, action) {
 			}
 		}
 			console.log(players);
-			var theState = Object.assign({}, state, {numberOfPlayers:action.players, players:players});
-			return theState;
-			break;
+			state = Object.assign({}, state, {numberOfPlayers:action.players, players:players, gameMode: action.gameMode });
+			return state;
 
 	case actions.ADD_CHOICE_TO_TOTAL :
 		let increment;
@@ -96,8 +104,7 @@ export default function reducer (state = initialState, action) {
 				let gameLoser = state.currentPlayer;
 				let gameIsDone = true;
 		
-		let newState = Object.assign({}, state, 
-			{loser: gameLoser, gameCompleted: gameIsDone});
+		let newState = Object.assign({}, state, {loser: gameLoser, gameCompleted: gameIsDone});
 		console.log(newState);
 		return newState;
 		//At this point we would have the loser displayed and the gameData will be sent to the server
@@ -107,7 +114,6 @@ export default function reducer (state = initialState, action) {
 				{runningTotal: total}, {currentPlayer:state.currentPlayer, seconds:6});
 			console.log(newState);
 			return newState;
-			break;
 
 	  case actions.SUBTRACT_SECOND :
 			let newCount = state.seconds -= 1;

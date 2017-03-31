@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 const gameSchema = mongoose.Schema({
     players: [ {type: Schema.Types.ObjectId, ref: 'User', required: true }],
-    loser: { type: Schema.Types.ObjectId, ref: 'User' },
+    loser: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     gameMode: {type: String, enum: ['single', 'multi'], default: 'single'},
-    dateCompleted: { type:Date , Default:Date.now }
+    dateCompleted: { type: Date, default: Date.now }
 });
 
 gameSchema.methods.getGameInfo = function() {

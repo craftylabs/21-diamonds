@@ -13,7 +13,7 @@ class GameMode extends Component {
 
   submitNewGame(event) {
     this.props.dispatch(actions.resetGame());
-    this.props.dispatch(actions.makeNewGame(2));
+    this.props.dispatch(actions.makeNewGame('single', 2)); //hard coding single player mode for now
   }
 
   render() {

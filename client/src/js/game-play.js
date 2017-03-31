@@ -51,13 +51,23 @@ class GamePlay extends Component {
 	}
 
 	recursiveTimer() {
-		
-		if(this.props.gameCompleted === true) {
+		if(this.props.gameCompleted === true) { 
+			clearInterval(this.countdown); 
+			console.log("RESETTING THE TIMER"); 
+			let { loser, gameMode, user, loggedIn } = store.getState();
+			if (loser === 1) {
+				loser = user._id;
+			} else {
+				loser = 'AI';
+			}
 
-			clearInterval(this.countdown);
-			console.log("RESETTING THE TIMER");
+			const game = {
+				players: loggedIn ? user.id : '',
+				gameMode,
+				loser
+			};
+			this.props.dispatch(actions.asyncSaveGame(game));
 		}
-
 		
 		if(this.props.seconds <= 0) {
 			console.log("clearing the interval");
