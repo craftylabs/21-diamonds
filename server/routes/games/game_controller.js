@@ -1,4 +1,5 @@
 const { Game } = require('../../models/game');
+const ObjectID = require('mongodb').ObjectID;
 
 module.exports.saveGame = (req, res) => {
   const { players, loser, gameMode } = req.body;
@@ -19,13 +20,12 @@ module.exports.saveGame = (req, res) => {
 
 
 module.exports.getGame = (req,res) => {
-   
+    const playerId = req.params.players;
     Game
-     .find({players: req.params.players})
+     .find({players: playerId})
      .exec()
      .then(game => {
-         console.log(game , 'game getting by id')
-       res.status(201).json(game.getGameInfo());
+       res.status(201).json(game);
      })
      .catch(err => {
        console.error(err);
