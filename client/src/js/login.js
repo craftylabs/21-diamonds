@@ -18,11 +18,17 @@ class Login extends Component {
       getUserInfo(event) {
         event.preventDefault();
         window.location.href='/api/auth/facebook';
-        let savedCookie = cookie.load('accessToken');        
-        if (savedCookie !== null) {
-         this.props.dispatch(actions.getUserInfo('10110600674071001'));         
-        }
-
+        // let fbId = cookie.load('facebookId');       
+        // if (fbId !== undefined) {
+        //   this.props.dispatch(actions.getUserInfo(fbId)).then(res => {
+        //     console.log('res', res);
+        //       if (res) {
+        //         this.props.history.push('/gamemodes');
+        //       }
+        //         this.props.history.push('/login');      
+        //     })
+        //   }
+        
       }
 
       render() {
@@ -48,9 +54,11 @@ class Login extends Component {
             </button>
             <br/>
 
-            <button className='button-facebook' onClick={this.getUserInfo}>
+            <a href="/api/auth/facebook">
+            <button className='button-facebook'>
                   Login with Facebook
             </button>
+            </a>
            <br/>
            
             <button className='button-guest'>
@@ -66,6 +74,7 @@ class Login extends Component {
   }
  }
 }
+
 
 const mapStateToProps = (state, props) => {
   return {

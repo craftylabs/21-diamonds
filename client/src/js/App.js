@@ -3,8 +3,11 @@ import Button from './button';
 import Header from './header';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import cookie from 'react-cookie';
+import * as actions from '../actions/actions';
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">

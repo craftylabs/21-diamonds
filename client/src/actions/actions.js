@@ -35,22 +35,22 @@ export const userInfoError = (user, error) => ({
 	error	
 });
 
-export const getUserInfo = cookie => (dispatch) => {
-	console.log(cookie);
-
-	const url = `api/users/${cookie}`;
+export const getUserInfo = userId => (dispatch) => {
+	const url = `api/users/${userId}`;
 
 	fetch(url)
 	.then(response => {
 		console.log(response);
+		return response.json();
 	})
-	.then(data => {
-		dispatch(userInfoSuccess(data));
+	.then(user => {
+		dispatch(userInfoSuccess(user));
+		return true;
 	})
 	.catch(error => {
 		console.log(error);
 		dispatch(userInfoError(error));
+		return false;
 	})
-
 }
 

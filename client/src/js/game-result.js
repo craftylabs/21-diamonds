@@ -3,39 +3,55 @@ import Header from './header';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-class GameResult extends Component {
-  render() {
+function LoginBtn() {
+  return (
+    <div> 
+      <p>Login to rank up, challenge friends and track your stats.</p>
+        <a href='/api/auth/facebook'>
+          <button>Login with Facebook</button>
+        </a>
+    </div>
+  );
+}
 
-    return (
+function GameBtn(props) {
+  return (
       <div>
-       <Header />
-
-
         <div className="game-result">
-          <p> Player {this.loser} loses!! </p>
-
+          <p> Player {props.loser} loses!! </p>
             <button>
                 <Link to={'/gamemodes'} >
                 Retry
                 </Link>
             </button>
-
             <button>
                 <Link to={'/app'} >
                 Main Menu
                 </Link>
             </button>          
-
         </div>
-
-         <p>Login to rank up, challenge friends and track your stats.</p>
-            <a href='/api/auth/facebook'>
-            <button>
-                  Login with Facebook
-            </button>
-            </a>
       </div>
-    );
+  );
+}
+
+class GameResult extends Component {
+
+  render() {
+    if (this.props.loggedIn) {
+      return (
+        <div>
+          <Header />
+          <GameBtn loser={this.props.loser}/>
+        </div>
+      )
+    }
+     return (
+       <div>
+        <Header />
+        <GameBtn />
+        <LoginBtn />
+       </div>
+     )
   }
 }
 

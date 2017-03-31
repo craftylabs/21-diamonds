@@ -3,7 +3,7 @@ import Header from './header';
 import {connect} from 'react-redux';
 import store from '../store.js';
 import * as actions from '../actions/actions';
-
+import cookie from 'react-cookie';
 import GameResult from './game-result';
 
 class GamePlay extends Component {
@@ -19,7 +19,12 @@ class GamePlay extends Component {
 		this.countdown = setInterval(this.recursiveTimer,1000);
 	}
 
-	//kokok
+	componentDidMount() {
+    const fbId = cookie.load('facebookId');
+    if (fbId) {
+      this.props.dispatch(actions.getUserInfo(fbId));
+    }
+  }
 
 	componentWillUpdate() {
 	this.renderDiamonds();
@@ -96,15 +101,15 @@ checkAI() {
 		if (this.props.gameCompleted) {
 			return (<GameResult />
 				)
-		}
-
-		else {
-				
+		} else {
+				const { user } = this.props
+				console.log(this.props.seconds);
 		return (
 			<div className="GamePlay">
 			<Header />
+			<p> Welcome {user.firstName} !</p>
 			<p>Player 1 vs. Computer</p>
-			<p> {this.props.user.firstName} </p>
+			
 			<div className="gameBoard">{this.diamonds}</div>
 
 			
@@ -129,7 +134,7 @@ const mapStateToProps = (state, props) => {
 		players: state.players,
 		currentPlayer: state.currentPlayer,
 		gameCompleted: state.gameCompleted,
-		user: state.user
+		user: state.user,
 	}
 }
 
