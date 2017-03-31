@@ -51,6 +51,7 @@ describe('Game ', function () {
                   })
                   .then(res => {
                     res.should.have.status(201);
+                    res.body.should.have.length.of.at.least(1);
                     
                   })
        });
