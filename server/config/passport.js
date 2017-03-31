@@ -21,7 +21,6 @@ module.exports = (passport) => {
     profileFields:['id', 'displayName', 'emails', 'name']
   },
   (accessToken, refreshToken, profile, done) => {
-    console.log('fb user profile: ', profile);
     User.findOne({ facebookId: profile.id}, function(err, user) {
       if (err) {
         return done(err);

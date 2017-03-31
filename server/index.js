@@ -1,9 +1,9 @@
 require('dotenv').config();
-console.log(process.env);
 const path = require('path');
 const express = require('express');
 const passport = require('passport');
 const mongoose = require('mongoose');
+const User = require('./models/user');
 mongoose.Promise = global.Promise;
 const {DB_URL, PORT} = require('./config/config');
 
@@ -20,6 +20,18 @@ function runServer(databaseUrl=DB_URL, port=PORT) {
       if (err) {
         return reject(err);
       }
+      User.findOne({ firstName: 'AI'}, function(err, user) {
+        if (err) throw err;
+        if (!user) {
+          console.log('creating house account...')
+          let AIUser = new User({
+            firstName: 'AI',
+            displayName: 'House Account',
+            email: 'ai@21diamonds.com'
+          });
+          AIUser.save();
+        }
+      });
       server = app.listen(port, () => {
         console.log(`Your app is listening on port ${port} in ${process.env.NODE_ENV} mode`);
         resolve();
