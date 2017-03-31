@@ -104,7 +104,7 @@ checkAI() {
 			<div className="GamePlay">
 			<Header />
 			<p>Player 1 vs. Computer</p>
-			<p> {this.props.user.firstName} </p>
+			<p> {this.props.user} </p>
 			<div className="gameBoard">{this.diamonds}</div>
 
 			

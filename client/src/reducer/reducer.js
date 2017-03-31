@@ -11,7 +11,7 @@ export const initialState = {
 	gameCompleted: false,
 	seconds:6,
 	players:null,
-	loggedIn: false,
+	loggedIn: true,
 	accessToken: null,
 	user: null
 }

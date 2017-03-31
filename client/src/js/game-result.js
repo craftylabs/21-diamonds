@@ -6,6 +6,34 @@ import {Link} from 'react-router-dom';
 class GameResult extends Component {
   render() {
 
+       if (this.props.loggedIn) {
+       return (
+      <div>
+       <Header />
+
+
+        <div className="game-result">
+          <p> Player {this.loser} loses!! </p>
+
+            <button>
+                <Link to={'/gamemodes'} >
+                Retry
+                </Link>
+            </button>
+
+            <button>
+                <Link to={'/app'} >
+                Main Menu
+                </Link>
+            </button>          
+
+        </div>
+      </div>
+    );
+    }
+
+    else {
+
     return (
       <div>
        <Header />
@@ -36,8 +64,8 @@ class GameResult extends Component {
             </a>
       </div>
     );
-  }
-}
+   }
+ }}
 
 const mapStateToProps = (state, props) => {
   return {
