@@ -1,22 +1,22 @@
 /*SASS VARIABLES*/
 $header-font-size:2.2rem;
 $sub-header-font-size:1.1rem;
-$dosis-font:'Dosis', sans-serif;
+$fira-font:'Fira Sans', sans-serif;
 
 
 /*IMPORT STATEMENTS*/
-@import url('https://fonts.googleapis.com/css?family=Dosis:300,400,500,600');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:300i,400,700');
 
 /*MOBILE LAYOUT*/
 
 h2{
-	font-family: $dosis-font;
+	font-family: $fira-font;
 	font-size:$header-font-size;
 	text-align:center;
 	padding:0.5%;
 }
 h3{
-	font-family:$dosis-font;
+	font-family:$fira-font;
 	font-size: $sub-header-font-size;
 	text-align: center;
 	padding:1%;
@@ -24,7 +24,7 @@ h3{
 
 *{
 	color:#F1FAEE;
-	font-family:$dosis-font;
+	font-family:$fira-font;
 }
 
 body {
@@ -40,9 +40,8 @@ a {
 }
 
 button {
-	min-width:58px;
-	max-width:200px;
-	min-height:55px;
+	min-width:20%;
+	min-height:75px;
 	max-height:220px;
 	background-color:#457B9D;
 	border-radius:7px;
@@ -63,24 +62,27 @@ li{
 
 ol{
 	min-width:33%;
-	text-align: center;
+	text-align: left;
+	margin-left:20%;
+	margin-right:20%;
 }
 
 .button-1 {
 	margin-right:6px;
 	font-weight: 300;
+	font-size:1.0em;
 
 }
 
 .button-2 {
 	margin-left:6px;
 	font-weight: 300;
+	font-size:1.0em;
 }
 
 .button--wide {
 	margin-top:20px;
-	min-width:175px;
-	box-shadow: 0px 0px;
+	min-width:40%;
 	font-weight: 600;
 	font-size:1.0em;
 }
@@ -136,7 +138,7 @@ td{
 .gameBoard {
 
 	width:80%;
-	height:auto;
+	height:520px;
 	border:3px solid black;
 	margin-left:10%;
 	margin-right:10%;
@@ -144,7 +146,7 @@ td{
 
 img{
 	width:25%;
-	height:150px;
+	height:125px;
 }
 
 .gameBoard-choices {
@@ -152,10 +154,32 @@ img{
 	text-align:center;
 	align-content: center;
 	top:86%;
-	margin-left:35%;
-	margin-right:35%;
+	margin-left:40%;
+	
 	margin-bottom:0%;
 	margin-top:1%;
+}
+
+.gameBoard-choices > button {
+
+	min-height:50px;
+	padding:4px;
+	min-width:60px;
+	margin:9px;
+}
+
+.gameBoard-choices > button:nth-child(1) {
+	margin-right:30px;
+}
+
+.gameBoard-choices > button:nth-child(2) {
+	margin-right:30px;
+}
+
+.gameBoard-count {
+	font-size:1.2em;
+	font-weight: 700;
+
 }
 
 @media  (max-width:594px) {
@@ -164,4 +188,28 @@ img{
 		margin-left:15%;
 		margin-right:15%;
 	}
+}
+
+@media (max-width:400px) {
+
+	.gameBoard-choices {
+		margin-left:0%;
+		margin-right:0%;
+	}
+}
+
+.gameBoard-timer {
+	font-size:1.0em;
+	font-weight:400;
+}
+
+.button--retry {
+	margin-bottom:4%;
+	min-width:33%;
+	font-size:1.1em;
+}
+
+.button--menu {
+	min-width:33%;
+	font-size:1.1em;
 }

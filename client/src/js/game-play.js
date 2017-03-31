@@ -20,14 +20,14 @@ class GamePlay extends Component {
 	}
 
 	componentDidMount() {
-    const fbId = cookie.load('facebookId');
-    if (fbId) {
-      this.props.dispatch(actions.getUserInfo(fbId));
-    }
-  }
+		const fbId = cookie.load('facebookId');
+		if (fbId) {
+			this.props.dispatch(actions.getUserInfo(fbId));
+		}
+	}
 
 	componentWillUpdate() {
-	this.renderDiamonds();
+		this.renderDiamonds();
 
 	}
 
@@ -45,7 +45,7 @@ class GamePlay extends Component {
 		this.diamonds = [];
 
 		for (var i = 0; i<currentStateValue.runningTotal; i++) {
-			 this.diamonds.push(<img key={i} alt="Diamond gamepiece" src="../../TheDiamond.png"/>)
+			this.diamonds.push(<img key={i} alt="Diamond gamepiece" src="../../TheDiamond.png"/>)
 		}
 		this.checkAI();
 	}
@@ -76,7 +76,7 @@ class GamePlay extends Component {
 
 			this.props.dispatch(actions.addChoiceToTotal(null, this.props.currentPlayer));
 			console.log("Resetting the timer");
-	
+
 			if(this.props.gameCompleted !== true) {
 				this.countdown = setInterval(this.recursiveTimer, 1000);
 			}
@@ -95,20 +95,26 @@ class GamePlay extends Component {
 	}
 
 
-select(state) {
-	return state
-};
+	select(state) {
+		return state
+	};
 	
-checkAI() {
-	var currentStateValue = this.select(store.getState());
 
-	if (this.props.players[currentStateValue.currentPlayer -1].ai === true) {
 
-			this.props.dispatch(actions.addChoiceToTotal(null, currentStateValue));
+	checkAI() {
+		
+
+		var currentStateValue = this.select(store.getState());
+
+		if (this.props.players[currentStateValue.currentPlayer -1].ai === true) {
+
+
+			//Delay Ai moves my varying nymber of seconds for now we make it 5 this allows the player to both go against the computer and play splitscreen mode
 		}
 
-}
+	}
 	
+	// object to send {players:[id:], loser:, gameMode:'single'}
 
 
 	render() {
@@ -118,27 +124,26 @@ checkAI() {
 			return (<GameResult />
 				)
 		} else {
-				const { user } = this.props
-				console.log(this.props.seconds);
-		return (
-			<div className="GamePlay">
-			<Header />
-			<p> Welcome {user.firstName} !</p>
-			<p>Player 1 vs. Computer</p>
-			
-			<div className="gameBoard">{this.diamonds}</div>
+			const { user } = this.props
+			console.log(this.props.seconds);
+			return (
+				<div className="GamePlay">
+				<Header />
+				<p> Welcome {user.firstName} !</p>
+				<p>Player 1 vs. Computer</p>
+				<p className="gameBoard-count">count: {this.props.runningTotal}</p>
+				<div className="gameBoard">{this.diamonds}</div>
 
-			
-			<div className="gameBoard-choices"onClick={this.submitNumChoice}>
-			<button value="1"> 1 </button>
-			<button value="2"> 2 </button>
-			<button value="3"> 3 </button>
-			<p className="gameBoard-timer">{this.props.seconds}</p>
-			<p className="gameBoard-count">count: {this.props.runningTotal}</p>
-			</div>
-			</div>
+				<p className="gameBoard--player">{ "Player " + this.props.currentPlayer + " 's Turn"} </p>
+				<div className="gameBoard-choices"onClick={this.submitNumChoice}>
+				<button value="1"> +1 </button>
+				<button value="2"> +2 </button>
+				<button value="3"> +3 </button>
+				<p className="gameBoard-timer">{ this.props.seconds + " Seconds"}</p>
+				</div>
+				</div>
 
-			)
+				)
 		}
 	}
 }
