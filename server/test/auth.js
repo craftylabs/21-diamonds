@@ -32,7 +32,8 @@ describe('User', function () {
                   
                   })
                   .then(res => {
-                    res.should.have.status(200);    
+                    res.should.have.status(200);  
+                    res.should.be.a('object');  
                     res.body.should.include.keys('id','facebookId','firstName','lastName','token','email');
                   })
        });
